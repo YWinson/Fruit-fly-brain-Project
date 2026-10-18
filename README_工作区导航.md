@@ -49,8 +49,8 @@
 - **M1 骨架已落盘**：`03_代码/common_utils/`（split/泄露硬断言/结果表/日志）+ `03_代码/M1_评测管线/`（synthetic/BNCI2014-001 数据、CSP+LDA、等效稀疏对照、LOSO CLI）+ `03_代码/tests/`。11 个测试通过；synthetic 单折冒烟可跑。
 - **运行环境**：MOABB 装在 `anaconda3/envs/eeg`（Python 3.11.15 / moabb 1.5.0）。跑 M1 用 `.../envs/eeg/python.exe`，不要用 base 的 Python 3.13（未装 MOABB）。
 - **真实数据已落地**：BNCI2014-001 全部 18 个 `.mat` 在 `02_数据/BNCI2014-001_原始/`（744 MB，D 盘），SHA256 manifest 见 `manifest_sha256.csv`。
-- **首个 baseline pilot**：9 折 LOSO、seed 0、CSP+LDA → balanced acc **0.3914 ± 0.1227**（chance 0.25）。单 seed、单 arm、未签核，是 pilot 不是正式结果；产出在 `99_临时/m1_baseline_pilot/`。
-- M2–M5、IF-5 仍为空壳；正式多种子结果出来前，所有数字一律标"示意演示"。
+- **首轮全量结果（2026-10-18）**：2 arm × 10 seed × 9 折 LOSO。baseline（CSP+LDA）**0.3914 ± 0.1163**；equiv_dropout（随机保留 50% CSP 特征）**0.3324 ± 0.0941**（seed 间均值 0.3324 ± 0.0181）；配对差 **0.0590 ± 0.0746**，8/9 被试 baseline 更高。**注意：这是 M1 管线验证 + 容量不匹配的对照，不是 M2 的生物学结论；正式统计由 B 做。**
+- M2–M5、IF-5 仍为空壳；M2 的核心问题（生物结构 mask vs 同密度随机 mask）尚未开始。
 
 ## 命名约定（建议）
 
