@@ -1,0 +1,109 @@
+language: zh
+vault_path: "D:/Python Program/Fruit fly brain Project"
+papers_dir: 20_Research/Papers
+research_domains:
+  果蝇全脑连接组:
+    keywords:
+      - connectome
+      - connectomics
+      - Drosophila
+      - fruit fly
+      - whole-brain
+      - neuronal wiring diagram
+      - electron microscopy reconstruction
+      - cell type annotation
+      - connectome-constrained
+      - synaptic connectivity
+      - circuit reconstruction
+      - mushroom body
+      - central complex
+      - hemibrain
+      - FlyWire
+      - neural circuit
+      - leaky integrate-and-fire
+      - brain simulation
+    arxiv_categories:
+      - q-bio.NC
+      - cs.NE
+      - cs.AI
+    priority: 5
+
+  EEG脑电解码与BCI:
+    keywords:
+      - EEG
+      - electroencephalography
+      - brain-computer interface
+      - BCI
+      - neural decoding
+      - motor imagery
+      - event-related potential
+      - ERP
+      - EEGNet
+      - MOABB
+      - cross-subject
+      - subject-independent
+      - transfer learning EEG
+      - brain signal
+      - neuroimaging decoding
+      - SSVEP
+      - P300
+    arxiv_categories:
+      - q-bio.NC
+      - eess.SP
+      - cs.LG
+      - cs.HC
+    priority: 5
+
+  脉冲神经网络与学习规则:
+    keywords:
+      - spiking neural network
+      - SNN
+      - spiking neuron
+      - spike-timing-dependent plasticity
+      - STDP
+      - synaptic plasticity
+      - learning rule
+      - neuromodulation
+      - neuromorphic
+      - surrogate gradient
+      - recurrent spiking network
+      - event-driven
+      - LIF neuron
+      - Hebbian
+      - credit assignment
+      - reservoir computing
+    arxiv_categories:
+      - cs.NE
+      - q-bio.NC
+      - cs.LG
+      - cs.AI
+    priority: 5
+
+  网络科学与图论:
+    keywords:
+      - network science
+      - graph theory
+      - network motif
+      - complex network
+      - small-world
+      - scale-free
+      - graph neural network
+      - community detection
+      - network controllability
+      - connectivity graph
+      - graph representation learning
+      - structural connectivity
+      - information flow
+      - network topology
+    arxiv_categories:
+      - cs.SI
+      - physics.soc-ph
+      - cs.LG
+      - q-bio.NC
+    priority: 4
+
+excluded_keywords:
+  - workshop
+  - survey
+  - tutorial
+semantic_scholar_api_key: ''

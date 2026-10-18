@@ -1,0 +1,7 @@
+# M1 dependencies including MOABB for BNCI2014-001.
+# If this fails on Python 3.13, create a Python 3.11/3.12 environment first:
+#   conda create -n flyeeg python=3.11
+#   conda activate flyeeg
+#   pip install -r requirements-m1-moabb.txt
+-r requirements-m1.txt
+moabb>=1.1

@@ -1,0 +1,22 @@
+{
+  "nodes": [
+    {
+      "id": "file-fd0f48f1d1ff52a6",
+      "title": "Data leakage in deep learning studies of translational EEG",
+      "domain": "EEG脑电解码与BCI",
+      "source_type": "local_pdf",
+      "source_url": "",
+      "arxiv_id": "",
+      "quality_score": 8.5,
+      "tags": [
+        "论文笔记",
+        "EEG脑电解码与BCI",
+        "local_pdf"
+      ],
+      "analyzed": true,
+      "updated": "2026-10-18"
+    }
+  ],
+  "edges": [],
+  "last_updated": "2026-10-18"
+}

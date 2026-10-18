@@ -1,0 +1,43 @@
+# M1 smoke-test configuration — no MOABB download required.
+# Synthetic data is for pipeline validation only; it is not a scientific result.
+dataset:
+  name: synthetic
+  n_subjects: 9
+  n_sessions: 2
+  n_runs: 6
+  n_classes: 4
+  n_trials_per_class: 4
+  n_channels: 22
+  sfreq: 250.0
+  duration_s: 0.5
+  seed: 0
+
+preprocess:
+  standardize: true
+  csp_components: 6
+  csp_reg: null
+  csp_log: true
+
+model:
+  type: lda
+  lda_solver: lsqr
+  lda_shrinkage: auto
+
+arms:
+  - baseline
+  - equiv_dropout
+
+equiv_dropout:
+  # Fraction of CSP features retained by the fixed random mask.
+  # This is the M1 proxy for the eventual equivalent-dropout arm.
+  density: 0.5
+
+evaluation:
+  seeds: [0, 1]
+  metrics: [balanced_accuracy]
+  save_predictions: true
+  canary_tolerance: 0.10
+
+output:
+  results_dir: 04_实验结果/结果表
+  log_dir: 04_实验结果/运行日志

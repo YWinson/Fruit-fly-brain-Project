@@ -1,0 +1,72 @@
+{
+  "dataset": {
+    "name": "bnci2014_001",
+    "n_subjects": 9,
+    "n_sessions": 2,
+    "n_runs": 6,
+    "n_classes": 4,
+    "n_trials_per_class": 12,
+    "n_channels": 22,
+    "sfreq": 250.0,
+    "duration_s": 4.0,
+    "seed": 0,
+    "subjects": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "data_path": "02_数据/BNCI2014-001_原始",
+    "tmin": 0.0,
+    "tmax": 4.0,
+    "resample": 250,
+    "fmin": 8.0,
+    "fmax": 32.0
+  },
+  "preprocess": {
+    "standardize": true,
+    "csp_components": 6,
+    "csp_reg": null,
+    "csp_log": true
+  },
+  "model": {
+    "type": "lda",
+    "lda_solver": "lsqr",
+    "lda_shrinkage": "auto"
+  },
+  "arms": [
+    "baseline",
+    "equiv_dropout"
+  ],
+  "equiv_dropout": {
+    "density": 0.5
+  },
+  "evaluation": {
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "metrics": [
+      "balanced_accuracy"
+    ],
+    "save_predictions": true,
+    "canary_tolerance": 0.1
+  },
+  "output": {
+    "results_dir": "04_实验结果/结果表",
+    "log_dir": "04_实验结果/运行日志"
+  }
+}
