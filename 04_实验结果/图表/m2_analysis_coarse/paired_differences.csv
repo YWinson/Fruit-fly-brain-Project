@@ -1,0 +1,4 @@
+comparison,left,right,n_subjects,mean_diff,std_diff,min_diff,max_diff,delta_acc,meets_delta_acc,wilcoxon_stat,wilcoxon_p
+bio_sparse - er_random,bio_sparse,er_random,9,-0.02295524691358026,0.048407449249393913,-0.08680555555555558,0.0625,0.025,False,13.0,0.30078125
+bio_sparse - equiv_dropout,bio_sparse,equiv_dropout,9,-0.015046296296296311,0.04909696438326139,-0.13194444444444453,0.036458333333333315,0.025,False,16.5,0.515625
+bio_sparse - dense_baseline,bio_sparse,dense_baseline,9,-0.017168209876543203,0.041833113404853656,-0.07465277777777779,0.052083333333333315,0.025,False,12.0,0.25

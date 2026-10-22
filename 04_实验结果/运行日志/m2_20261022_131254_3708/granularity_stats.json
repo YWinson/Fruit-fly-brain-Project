@@ -1,0 +1,25 @@
+{
+  "granularity": "coarse",
+  "k_out": 2,
+  "k_in": 2,
+  "expand_out": 32,
+  "expand_in": 16,
+  "n_types_selected": 8155,
+  "n_neurons_selected": 52267,
+  "n_nonzero_cluster_pairs": 4,
+  "n_nonzero_square_pairs": 4,
+  "n_nonzero_expanded_pairs": 2048,
+  "cluster_density": 1.0,
+  "expanded_density": 1.0,
+  "total_synapses_cluster": 16101264.0,
+  "excitatory_synapses_cluster": 9272077.0,
+  "inhibitory_synapses_cluster": 6829187.0,
+  "out_cluster_sizes": [
+    6661,
+    1494
+  ],
+  "in_cluster_sizes": [
+    6661,
+    1494
+  ]
+}
