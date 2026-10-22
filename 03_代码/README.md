@@ -1,33 +1,29 @@
 # 03_代码
 
-项目代码目录。当前已搭建 **M1 评测管线 + common_utils**；M2–M5 目录保留为空壳，按里程碑逐步填充。
+项目代码目录。当前已搭建 **M1 评测管线 + M2 先验注入臂 + common_utils**；M3–M5 目录保留为空壳，按里程碑逐步填充。
 
 ```
 03_代码/
 ├── common_utils/           # 共用底座：路径、元数据、LOSO split、泄露硬断言、结果表、日志、配置
-├── M1_评测管线/            # 当前实现：无结构基线 + 等效 dropout 臂的 LOSO 流程
-├── M2_先验注入/            # 待 M2 设计草案评审后动工
-├── M3_消融工具/            # 待 M1/M2 稳定后动工
+├── M1_评测管线/            # 无结构基线 + 等效稀疏臂的 LOSO 流程
+├── M2_先验注入/            # 已实现：FlyWire 类型级先验 + 5 条对照臂 + masked MLP + δ_topo
+├── M3_消融工具/            # 待 M2 结果稳定后动工
 ├── M4_可塑性验证/          # 可在 M1 后并行启动
 ├── M5_移植验证/            # 待 M3 定位有效回路后动工
 ├── IF-5在线接口/            # batch=1 在线接口，随 M1–M4 带出
-├── tests/                  # common_utils + M1 的单元测试/冒烟测试
+├── tests/                  # common_utils + M1 + M2 的单元测试/冒烟测试
 ├── requirements-m1.txt     # 核心依赖（numpy/pandas/scipy/sklearn/mne/pytest）
 └── requirements-m1-moabb.txt  # 加上 moabb（真实 BNCI2014-001 需要）
 ```
 
 ## 环境说明
 
-当前机器的 Anaconda Python 3.13 已安装 `numpy / pandas / scipy / scikit-learn / mne / PyYAML / joblib / pytest`，但 **未安装 `moabb`**。
+**当前跑 M1/M2 用 `anaconda3/envs/eeg`**（Python 3.11.15）：已装 `moabb 1.5.0`、`mne 1.12.1`、`scikit-learn 1.8.0`、`torch 2.5.0`、`pandas 3.0.2`、`networkx 3.6.1`。
 
-- **先跑 synthetic**：不需要 MOABB，直接验证 split、Pipeline、结果表、日志。
-- **跑真实 BNCI2014-001**：安装 MOABB。如果 Python 3.13 装不上，建一个 Python 3.11/3.12 环境：
-  ```bash
-  conda create -n flyeeg python=3.11 -y
-  conda activate flyeeg
-  pip install -r requirements-m1-moabb.txt
-  ```
-- **torch / EEGNet**：M1 当前不依赖 torch；M5 或后续神经网络臂再装。
+- base 的 Python 3.13 只有 M1 的基础依赖（无 moabb、无 torch），不要用它跑 M2。
+- **先跑 synthetic**：不需要 BNCI 下载，验证 split、Pipeline、结果表、日志。
+- **真实 BNCI2014-001**：数据已在 `02_数据/BNCI2014-001_原始/`（D 盘）；用 `envs/eeg/python.exe`。
+- **FlyWire 数据**：`02_数据/fly_connectome/raw/`（D 盘，约 130 MB）；`.gitignore` 已排除。
 
 ## 快速开始
 
@@ -46,8 +42,22 @@ python "M1_评测管线/run_m1.py" --config "M1_评测管线/configs/m1_syntheti
     --dataset synthetic --arm baseline equiv_dropout --seed 0 --max-folds 1
 
 # 4) 真实数据（需 MOABB）
-python "M1_评测管线/run_m1.py" --config "M1_评测管线/configs/m1_bnci2014_001.yaml" \
+"C:/Users/Winson/anaconda3/envs/eeg/python.exe" "M1_评测管线/run_m1.py" \
+    --config "M1_评测管线/configs/m1_bnci2014_001.yaml" \
     --dataset bnci2014_001 --arm baseline --seed 0 --subject 1
+
+# 5) M2：构建 FlyWire 类型级矩阵（只需一次）
+"C:/Users/Winson/anaconda3/envs/eeg/python.exe" "M2_先验注入/connectome.py" --force
+
+# 6) M2：单折 5 arms 冒烟
+"C:/Users/Winson/anaconda3/envs/eeg/python.exe" "M2_先验注入/run_m2.py" \
+    --config "M2_先验注入/configs/m2_bnci2014_001.yaml" \
+    --arm bio_sparse deg_rewired er_random equiv_dropout dense_baseline \
+    --seed 0 --subject 1 --max-folds 1
+
+# 7) M2：全量 3 seeds × 9 folds × 5 arms
+"C:/Users/Winson/anaconda3/envs/eeg/python.exe" "M2_先验注入/run_m2.py" \
+    --config "M2_先验注入/configs/m2_bnci2014_001.yaml" --seed 0 1 2
 ```
 
 ## 关键约定
@@ -61,6 +71,7 @@ python "M1_评测管线/run_m1.py" --config "M1_评测管线/configs/m1_bnci2014
 ## 相关文档
 
 - [M1 评测管线 README](M1_评测管线/README.md)
+- [M2 先验注入 README](M2_先验注入/README.md)
 - [M1 LOSO 泄露自查清单](../06_会议与笔记/M1_LOSO_泄露自查清单.md)
 - [工作区导航](../README_工作区导航.md)
 - [任务书](../20260925_任务书_学生A.docx)

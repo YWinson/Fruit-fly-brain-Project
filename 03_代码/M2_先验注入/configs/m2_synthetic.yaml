@@ -1,0 +1,52 @@
+# M2 smoke-test configuration — no BNCI/MOABB download required.
+# Synthetic accuracy is meaningless; this only validates the pipeline.
+dataset:
+  name: synthetic
+  n_subjects: 3
+  n_sessions: 2
+  n_runs: 2
+  n_classes: 4
+  n_trials_per_class: 4
+  n_channels: 8
+  sfreq: 125.0
+  duration_s: 1.0
+  seed: 0
+  resample: 125
+  tmax: 1.0
+
+preprocess:
+  bands: [[8, 12], [12, 16], [16, 24], [24, 32]]
+  csp_components: 8
+  csp_reg: null
+  csp_log: true
+
+model:
+  hidden_dim: 64
+  epochs: 40
+  batch_size: 64
+  lr: 0.001
+  weight_decay: 0.0001
+  device: cpu
+  verbose: false
+
+fly:
+  granularity: fine
+  mask_density: 0.10
+  mask_selection: balanced
+  min_neurons: 1
+  motif_null_samples: 20
+
+arms:
+  - bio_sparse
+  - deg_rewired
+  - er_random
+  - equiv_dropout
+  - dense_baseline
+
+evaluation:
+  seeds: [0]
+  canary_tolerance: 0.25
+
+output:
+  results_dir: 99_临时/m2_synthetic/results
+  log_dir: 99_临时/m2_synthetic/logs

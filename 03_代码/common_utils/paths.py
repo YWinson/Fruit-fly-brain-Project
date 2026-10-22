@@ -16,6 +16,10 @@ BNCI_RAW_DIR = DATA_DIR / "BNCI2014-001_原始"
 CACHE_DIR = DATA_DIR / "预处理缓存"
 DATA_CARDS_DIR = DATA_DIR / "数据卡data_cards"
 
+FLY_DIR = DATA_DIR / "fly_connectome"
+FLY_RAW_DIR = FLY_DIR / "raw"
+FLY_PROCESSED_DIR = FLY_DIR / "processed"
+
 RESULTS_DIR = PROJECT_ROOT / "04_实验结果"
 RESULTS_TABLE_DIR = RESULTS_DIR / "结果表"
 RESULTS_LOG_DIR = RESULTS_DIR / "运行日志"

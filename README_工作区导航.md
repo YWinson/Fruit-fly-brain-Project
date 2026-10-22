@@ -49,8 +49,9 @@
 - **M1 骨架已落盘**：`03_代码/common_utils/`（split/泄露硬断言/结果表/日志）+ `03_代码/M1_评测管线/`（synthetic/BNCI2014-001 数据、CSP+LDA、等效稀疏对照、LOSO CLI）+ `03_代码/tests/`。11 个测试通过；synthetic 单折冒烟可跑。
 - **运行环境**：MOABB 装在 `anaconda3/envs/eeg`（Python 3.11.15 / moabb 1.5.0）。跑 M1 用 `.../envs/eeg/python.exe`，不要用 base 的 Python 3.13（未装 MOABB）。
 - **真实数据已落地**：BNCI2014-001 全部 18 个 `.mat` 在 `02_数据/BNCI2014-001_原始/`（744 MB，D 盘），SHA256 manifest 见 `manifest_sha256.csv`。
-- **首轮全量结果（2026-10-18）**：2 arm × 10 seed × 9 折 LOSO。baseline（CSP+LDA）**0.3914 ± 0.1163**；equiv_dropout（随机保留 50% CSP 特征）**0.3324 ± 0.0941**（seed 间均值 0.3324 ± 0.0181）；配对差 **0.0590 ± 0.0746**，8/9 被试 baseline 更高。**注意：这是 M1 管线验证 + 容量不匹配的对照，不是 M2 的生物学结论；正式统计由 B 做。**
-- M2–M5、IF-5 仍为空壳；M2 的核心问题（生物结构 mask vs 同密度随机 mask）尚未开始。
+- **M1 首轮全量结果（2026-10-18）**：2 arm × 10 seed × 9 折 LOSO。baseline（CSP+LDA）**0.3914 ± 0.1163**；equiv_dropout（随机保留 50% CSP 特征）**0.3324 ± 0.0941**（seed 间均值 0.3324 ± 0.0181）；配对差 **0.0590 ± 0.0746**，8/9 被试 baseline 更高。**注意：这是 M1 管线验证 + 容量不匹配的对照，不是 M2 的生物学结论；正式统计由 B 做。**
+- **M2 先验注入（2026-10-21/22）**：FlyWire v783 类型级连接矩阵已构建（8,846 类型、2.69M 边、34.0M 突触）；实现 fine/medium/coarse 三级粒度、五条 arm（bio_sparse / deg_rewired / er_random / equiv_dropout / dense_baseline）、Masked MLP、degree-preserving curveball 零模型、FFL/bi-fan δ_topo 校准。代码见 `03_代码/M2_先验注入/`，数据见 `02_数据/fly_connectome/`（D 盘，不入库）。全量 3 seed × 9 折 × 5 arm 正在跑；结果回填后更新本节。
+- M3–M5、IF-5 仍为空壳。
 
 ## 命名约定（建议）
 

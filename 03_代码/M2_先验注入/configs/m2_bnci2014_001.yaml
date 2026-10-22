@@ -1,0 +1,61 @@
+# M2 fly-topology prior injection — BNCI2014-001.
+# Stage 1: 4 bands x 8 CSP components = d_in 32.
+# Stage 2: fixed 64x32 fly mask, 10% density.
+dataset:
+  name: bnci2014_001
+  subjects: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  data_path: 02_数据/BNCI2014-001_原始
+  n_classes: 4
+  tmin: 0.0
+  tmax: 2.0          # 2 s motor-imagery window
+  resample: 100      # 100 Hz is enough for the 8-32 Hz motor bands and keeps CSP tractable
+  fmin: 8.0
+  fmax: 32.0
+  sfreq: 100.0
+  duration_s: 2.0
+
+preprocess:
+  # 2 bands x 16 CSP components = d_in 32. Two bands keep the full 9-fold
+  # x 3-seed x 5-arm run tractable while remaining a multi-band CSP.
+  bands: [[8, 13], [13, 30]]
+  csp_components: 16
+  csp_reg: null
+  csp_log: true
+  # Keep this at 1 for the full run: joblib workers copy the 77 MB training
+  # array and, with multiple seeds in parallel, exhaust the Windows page file.
+  csp_n_jobs: 1
+
+model:
+  hidden_dim: 64
+  epochs: 100
+  batch_size: 256
+  lr: 0.001
+  weight_decay: 0.0001
+  device: cpu
+  verbose: false
+
+fly:
+  raw_dir: 02_数据/fly_connectome/raw
+  processed_dir: 02_数据/fly_connectome/processed
+  granularity: fine
+  mask_density: 0.10
+  mask_selection: balanced
+  min_neurons: 1
+  superclasses: [central, sensory, ascending, descending, motor, sensory_ascending, endocrine]
+  motif_null_samples: 1000
+  motif_n_jobs: -1
+
+arms:
+  - bio_sparse
+  - deg_rewired
+  - er_random
+  - equiv_dropout
+  - dense_baseline
+
+evaluation:
+  seeds: [0, 1, 2]
+  canary_tolerance: 0.10
+
+output:
+  results_dir: 04_实验结果/结果表
+  log_dir: 04_实验结果/运行日志
