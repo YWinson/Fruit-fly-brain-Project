@@ -1,0 +1,21 @@
+{
+  "n_requested": 1000,
+  "n_valid": 1000,
+  "method": "edge_swap",
+  "ffl": {
+    "observed": 100052,
+    "null_mean": 99058.258,
+    "null_std": 76.42511520589443,
+    "null_q99_delta_topo": 99245.01,
+    "z": 13.00281978408263,
+    "p_empirical": 0.0
+  },
+  "bifan": {
+    "observed": 1173997,
+    "null_mean": 1163228.754,
+    "null_std": 838.2349762204864,
+    "null_q99_delta_topo": 1165262.37,
+    "z": 12.846333433320732,
+    "p_empirical": 0.0
+  }
+}

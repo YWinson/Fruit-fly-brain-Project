@@ -50,7 +50,10 @@
 - **运行环境**：MOABB 装在 `anaconda3/envs/eeg`（Python 3.11.15 / moabb 1.5.0）。跑 M1 用 `.../envs/eeg/python.exe`，不要用 base 的 Python 3.13（未装 MOABB）。
 - **真实数据已落地**：BNCI2014-001 全部 18 个 `.mat` 在 `02_数据/BNCI2014-001_原始/`（744 MB，D 盘），SHA256 manifest 见 `manifest_sha256.csv`。
 - **M1 首轮全量结果（2026-10-18）**：2 arm × 10 seed × 9 折 LOSO。baseline（CSP+LDA）**0.3914 ± 0.1163**；equiv_dropout（随机保留 50% CSP 特征）**0.3324 ± 0.0941**（seed 间均值 0.3324 ± 0.0181）；配对差 **0.0590 ± 0.0746**，8/9 被试 baseline 更高。**注意：这是 M1 管线验证 + 容量不匹配的对照，不是 M2 的生物学结论；正式统计由 B 做。**
-- **M2 先验注入（2026-10-21/22）**：FlyWire v783 类型级连接矩阵已构建（8,846 类型、2.69M 边、34.0M 突触）；实现 fine/medium/coarse 三级粒度、五条 arm（bio_sparse / deg_rewired / er_random / equiv_dropout / dense_baseline）、Masked MLP、degree-preserving curveball 零模型、FFL/bi-fan δ_topo 校准。代码见 `03_代码/M2_先验注入/`，数据见 `02_数据/fly_connectome/`（D 盘，不入库）。全量 3 seed × 9 折 × 5 arm 正在跑；结果回填后更新本节。
+- **M2 先验注入（2026-10-21/22）**：FlyWire v783 类型级连接矩阵已构建（8,846 类型、2.69M 边、34.0M 突触）；实现 fine/medium/coarse 三级粒度、五条 arm、Masked MLP、curveball 度保持零模型、FFL/bi-fan δ_topo 校准。代码见 `03_代码/M2_先验注入/`，数据见 `02_数据/fly_connectome/`（D 盘，不入库）。
+- **M2 首轮结果（fine，3 seeds × 9 折）**：bio_sparse **0.3807 ± 0.1063**、deg_rewired 0.3724、er_random 0.3699、equiv_dropout 0.3601、dense_baseline 0.3625。bio 在三个 seed 中最高，但 bio−deg 仅 **+0.82pp**、bio−er 仅 **+1.08pp**，均**低于 δ_acc=2.5pp**；配对 Wilcoxon p=0.055 / 0.359。**弱/阴性结果，不支持"果蝇类型级先验 ≥2.5pp 提升"。**
+- **粒度探针（各 1 seed）**：fine bio .3785 vs ER .3644（+1.41pp）；medium .3627 vs .3644（−0.17pp）；coarse .3414 vs .3644（−2.30pp，coarse 的 deg N/A）。方向是 fine > medium > coarse，但 fine 仍未达 δ_acc。
+- **δ_topo（1,000 nulls）**：FFL Z=**13.00**、bi-fan Z=**12.85**（empirical p=0）；真实类型簇图的 motif 显著高于度保持零模型。但**结构显著性 ≠ 解码增益**：M2 首轮整体是弱/阴性结果。M2 首轮完成，待 B 正式统计。
 - M3–M5、IF-5 仍为空壳。
 
 ## 命名约定（建议）
