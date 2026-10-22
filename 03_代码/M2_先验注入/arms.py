@@ -14,6 +14,7 @@ from sklearn.preprocessing import StandardScaler
 from common_utils.seeding import derive_seed
 
 from .clusters import GranularityResult
+from .eegnet import EEGNetFeatureExtractor
 from .features import MultiBandCSP
 from .masks import (
     MaskError,
@@ -42,9 +43,47 @@ MODEL_NAMES = {
 }
 
 
-def build_stage1(config: dict) -> Pipeline:
-    """Stage 1: fixed multi-band filter + per-fold CSP + feature scaling."""
+def build_stage1(config: dict, seed: int = 0, fold_id: int = 0) -> Pipeline:
+    """Stage 1: multi-band CSP or an EEGNet trunk + feature scaling.
+
+    The stage is fitted once per LOSO fold and shared by every arm. For the
+    EEGNet variant the trunk is trained on the training subjects with a
+    temporary 4-class head; the head is discarded and the frozen 32-D features
+    feed the masked M2 heads.
+    """
     pre_cfg = config.get("preprocess", {})
+    stage1_type = str(pre_cfg.get("stage1", "csp")).lower()
+
+    if stage1_type == "eegnet":
+        eeg = pre_cfg.get("eegnet", {})
+        return Pipeline(
+            [
+                (
+                    "eegnet",
+                    EEGNetFeatureExtractor(
+                        feature_dim=int(eeg.get("feature_dim", 32)),
+                        F1=int(eeg.get("F1", 8)),
+                        D=int(eeg.get("D", 2)),
+                        F2=int(eeg.get("F2", 16)),
+                        kernel_length=int(eeg.get("kernel_length", 64)),
+                        dropout=float(eeg.get("dropout", 0.25)),
+                        epochs=int(eeg.get("epochs", 100)),
+                        batch_size=int(eeg.get("batch_size", 64)),
+                        lr=float(eeg.get("lr", 1e-3)),
+                        weight_decay=float(eeg.get("weight_decay", 1e-4)),
+                        random_state=derive_seed(seed, fold_id, "eegnet_stage1"),
+                        device=str(eeg.get("device", "cpu")),
+                        verbose=bool(eeg.get("verbose", False)),
+                        num_threads=int(eeg.get("num_threads", 4)),
+                    ),
+                ),
+                ("scaler", StandardScaler()),
+            ]
+        )
+
+    if stage1_type != "csp":
+        raise ValueError(f"unknown preprocess.stage1: {stage1_type!r}")
+
     return Pipeline(
         [
             (

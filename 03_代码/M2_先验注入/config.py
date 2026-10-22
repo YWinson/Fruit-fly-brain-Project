@@ -33,11 +33,27 @@ M2_DEFAULT_CONFIG: dict = {
         "duration_s": 2.0,
     },
     "preprocess": {
+        "stage1": "csp",
         "bands": [[8, 12], [12, 16], [16, 24], [24, 32]],
         "csp_components": 8,
         "csp_reg": None,
         "csp_log": True,
         "csp_n_jobs": 1,
+        "eegnet": {
+            "feature_dim": 32,
+            "F1": 8,
+            "D": 2,
+            "F2": 16,
+            "kernel_length": 64,
+            "dropout": 0.25,
+            "epochs": 100,
+            "batch_size": 64,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "device": "cpu",
+            "verbose": False,
+            "num_threads": 4,
+        },
     },
     "model": {
         "hidden_dim": 64,
@@ -117,13 +133,24 @@ def validate_m2_config(config: dict) -> None:
         raise ValueError(f"fly.mask_selection must be 'balanced' or 'global', got {selection!r}")
 
     pre = config.get("preprocess", {})
-    bands = pre.get("bands", [])
-    components = int(pre.get("csp_components", 8))
-    if len(bands) * components != 32:
-        raise ValueError(
-            "Stage 1 must produce d_in=32 features: "
-            f"{len(bands)} bands x {components} components != 32"
-        )
+    stage1 = str(pre.get("stage1", "csp")).lower()
+    if stage1 not in {"csp", "eegnet"}:
+        raise ValueError(f"preprocess.stage1 must be 'csp' or 'eegnet', got {stage1!r}")
+
+    if stage1 == "csp":
+        bands = pre.get("bands", [])
+        components = int(pre.get("csp_components", 8))
+        if len(bands) * components != 32:
+            raise ValueError(
+                "Stage 1 must produce d_in=32 features: "
+                f"{len(bands)} bands x {components} components != 32"
+            )
+    else:
+        feature_dim = int(pre.get("eegnet", {}).get("feature_dim", 32))
+        if feature_dim != 32:
+            raise ValueError(
+                f"eegnet.feature_dim must be 32 for the 64x32 mask, got {feature_dim}"
+            )
 
     seeds = config.get("evaluation", {}).get("seeds", [])
     if not seeds:

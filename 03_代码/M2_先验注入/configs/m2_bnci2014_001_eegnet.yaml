@@ -1,0 +1,64 @@
+# M2 with EEGNet Stage 1 (stronger feature extractor).
+# The EEGNet trunk is trained once per LOSO fold on the training subjects;
+# its 32-D penultimate features are frozen and shared by all five arms.
+dataset:
+  name: bnci2014_001
+  subjects: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  data_path: 02_数据/BNCI2014-001_原始
+  n_classes: 4
+  tmin: 0.0
+  tmax: 2.0
+  resample: 100
+  fmin: 8.0
+  fmax: 32.0
+  sfreq: 100.0
+  duration_s: 2.0
+
+preprocess:
+  stage1: eegnet
+  eegnet:
+    feature_dim: 32
+    F1: 8
+    D: 2
+    F2: 16
+    kernel_length: 32
+    dropout: 0.25
+    epochs: 40
+    batch_size: 128
+    lr: 0.001
+    weight_decay: 0.0001
+    device: cpu
+    verbose: false
+    num_threads: 8
+  # The CSP fields are inherited from the defaults but unused with stage1=eegnet.
+  csp_components: 16
+
+model:
+  hidden_dim: 64
+  epochs: 100
+  batch_size: 256
+  lr: 0.001
+  weight_decay: 0.0001
+  device: cpu
+  verbose: false
+
+fly:
+  granularity: fine
+  mask_density: 0.10
+  mask_selection: balanced
+  min_neurons: 1
+
+arms:
+  - bio_sparse
+  - deg_rewired
+  - er_random
+  - equiv_dropout
+  - dense_baseline
+
+evaluation:
+  seeds: [0]
+  canary_tolerance: 0.10
+
+output:
+  results_dir: 04_实验结果/结果表/m2_eegnet
+  log_dir: 04_实验结果/运行日志

@@ -115,6 +115,23 @@ def test_multiband_csp_output_dimension():
     assert transformer.transform(X[:5]).shape == (5, 32)
 
 
+def test_eegnet_feature_extractor_output():
+    from M2_先验注入.eegnet import EEGNetFeatureExtractor
+
+    rng = np.random.default_rng(5)
+    X = rng.normal(size=(24, 8, 100)).astype(np.float32)
+    y = np.repeat(np.arange(4), 6)
+    extractor = EEGNetFeatureExtractor(
+        feature_dim=32,
+        epochs=2,
+        batch_size=8,
+        random_state=0,
+    )
+    features = extractor.fit_transform(X, y)
+    assert features.shape == (24, 32)
+    assert extractor.transform(X[:5]).shape == (5, 32)
+
+
 def test_motif_counts_on_toy_graphs():
     ffl = np.zeros((3, 3), dtype=int)
     ffl[0, 1] = ffl[0, 2] = ffl[1, 2] = 1

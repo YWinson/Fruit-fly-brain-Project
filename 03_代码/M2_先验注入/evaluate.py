@@ -174,7 +174,7 @@ def evaluate_fold_for_arms(
     X_train, y_train = dataset.X[train_idx], dataset.y[train_idx]
     X_test, y_test = dataset.X[test_idx], dataset.y[test_idx]
 
-    stage1 = build_stage1(config)
+    stage1 = build_stage1(config, seed=seed, fold_id=fold.fold_id)
     tracemalloc.start()
     fit_start = time.perf_counter()
     X_train_feat = stage1.fit_transform(X_train, y_train)
