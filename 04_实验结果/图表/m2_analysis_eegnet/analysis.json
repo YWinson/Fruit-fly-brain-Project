@@ -1,0 +1,380 @@
+{
+  "n_files": 1,
+  "n_rows": 135,
+  "n_all_rows": 45,
+  "arms": [
+    "dense_baseline",
+    "equiv_dropout",
+    "er_random",
+    "deg_rewired",
+    "bio_sparse"
+  ],
+  "seeds": [
+    0
+  ],
+  "subjects": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+  "delta_acc": 0.025,
+  "summary": [
+    {
+      "arm": "dense_baseline",
+      "mean": 0.44502314814814814,
+      "std": 0.15333901018577462,
+      "count": 9
+    },
+    {
+      "arm": "equiv_dropout",
+      "mean": 0.43769290123456783,
+      "std": 0.15235906866548013,
+      "count": 9
+    },
+    {
+      "arm": "er_random",
+      "mean": 0.4479166666666667,
+      "std": 0.15122364914957648,
+      "count": 9
+    },
+    {
+      "arm": "deg_rewired",
+      "mean": 0.441358024691358,
+      "std": 0.15341461380728436,
+      "count": 9
+    },
+    {
+      "arm": "bio_sparse",
+      "mean": 0.44058641975308643,
+      "std": 0.14939833241145428,
+      "count": 9
+    }
+  ],
+  "comparisons": [
+    {
+      "comparison": "bio_sparse - deg_rewired",
+      "left": "bio_sparse",
+      "right": "deg_rewired",
+      "n_subjects": 9,
+      "mean_diff": -0.000771604938271596,
+      "std_diff": 0.00970946859696906,
+      "min_diff": -0.01736111111111116,
+      "max_diff": 0.01215277777777779,
+      "delta_acc": 0.025,
+      "meets_delta_acc": false,
+      "wilcoxon_stat": 13.0,
+      "wilcoxon_p": 0.9375
+    },
+    {
+      "comparison": "bio_sparse - er_random",
+      "left": "bio_sparse",
+      "right": "er_random",
+      "n_subjects": 9,
+      "mean_diff": -0.007330246913580264,
+      "std_diff": 0.008539557038989386,
+      "min_diff": -0.01909722222222221,
+      "max_diff": 0.010416666666666574,
+      "delta_acc": 0.025,
+      "meets_delta_acc": false,
+      "wilcoxon_stat": 5.0,
+      "wilcoxon_p": 0.03515625
+    },
+    {
+      "comparison": "bio_sparse - equiv_dropout",
+      "left": "bio_sparse",
+      "right": "equiv_dropout",
+      "n_subjects": 9,
+      "mean_diff": 0.002893518518518539,
+      "std_diff": 0.013996975257462772,
+      "min_diff": -0.01736111111111116,
+      "max_diff": 0.02777777777777779,
+      "delta_acc": 0.025,
+      "meets_delta_acc": false,
+      "wilcoxon_stat": 12.5,
+      "wilcoxon_p": 0.484375
+    },
+    {
+      "comparison": "bio_sparse - dense_baseline",
+      "left": "bio_sparse",
+      "right": "dense_baseline",
+      "n_subjects": 9,
+      "mean_diff": -0.0044367283950617125,
+      "std_diff": 0.013394834489702207,
+      "min_diff": -0.02777777777777779,
+      "max_diff": 0.01388888888888884,
+      "delta_acc": 0.025,
+      "meets_delta_acc": false,
+      "wilcoxon_stat": 9.0,
+      "wilcoxon_p": 0.46875
+    }
+  ],
+  "paired_details": {
+    "bio_sparse - deg_rewired": [
+      {
+        "subject": 1,
+        "seed": 0,
+        "deg_rewired": 0.546875,
+        "bio_sparse": 0.5295138888888888,
+        "diff": -0.01736111111111116
+      },
+      {
+        "subject": 2,
+        "seed": 0,
+        "deg_rewired": 0.2951388888888889,
+        "bio_sparse": 0.296875,
+        "diff": 0.001736111111111105
+      },
+      {
+        "subject": 3,
+        "seed": 0,
+        "deg_rewired": 0.6267361111111112,
+        "bio_sparse": 0.6267361111111112,
+        "diff": 0.0
+      },
+      {
+        "subject": 4,
+        "seed": 0,
+        "deg_rewired": 0.3628472222222222,
+        "bio_sparse": 0.3680555555555556,
+        "diff": 0.00520833333333337
+      },
+      {
+        "subject": 5,
+        "seed": 0,
+        "deg_rewired": 0.28125,
+        "bio_sparse": 0.28125,
+        "diff": 0.0
+      },
+      {
+        "subject": 6,
+        "seed": 0,
+        "deg_rewired": 0.2951388888888888,
+        "bio_sparse": 0.3072916666666666,
+        "diff": 0.01215277777777779
+      },
+      {
+        "subject": 7,
+        "seed": 0,
+        "deg_rewired": 0.3420138888888889,
+        "bio_sparse": 0.3385416666666667,
+        "diff": -0.00347222222222221
+      },
+      {
+        "subject": 8,
+        "seed": 0,
+        "deg_rewired": 0.5920138888888888,
+        "bio_sparse": 0.6006944444444444,
+        "diff": 0.00868055555555558
+      },
+      {
+        "subject": 9,
+        "seed": 0,
+        "deg_rewired": 0.6302083333333333,
+        "bio_sparse": 0.6163194444444444,
+        "diff": -0.01388888888888884
+      }
+    ],
+    "bio_sparse - er_random": [
+      {
+        "subject": 1,
+        "seed": 0,
+        "er_random": 0.5364583333333334,
+        "bio_sparse": 0.5295138888888888,
+        "diff": -0.006944444444444531
+      },
+      {
+        "subject": 2,
+        "seed": 0,
+        "er_random": 0.3107638888888889,
+        "bio_sparse": 0.296875,
+        "diff": -0.013888888888888895
+      },
+      {
+        "subject": 3,
+        "seed": 0,
+        "er_random": 0.6302083333333334,
+        "bio_sparse": 0.6267361111111112,
+        "diff": -0.00347222222222221
+      },
+      {
+        "subject": 4,
+        "seed": 0,
+        "er_random": 0.3784722222222222,
+        "bio_sparse": 0.3680555555555556,
+        "diff": -0.01041666666666663
+      },
+      {
+        "subject": 5,
+        "seed": 0,
+        "er_random": 0.2847222222222222,
+        "bio_sparse": 0.28125,
+        "diff": -0.00347222222222221
+      },
+      {
+        "subject": 6,
+        "seed": 0,
+        "er_random": 0.296875,
+        "bio_sparse": 0.3072916666666666,
+        "diff": 0.010416666666666574
+      },
+      {
+        "subject": 7,
+        "seed": 0,
+        "er_random": 0.3524305555555556,
+        "bio_sparse": 0.3385416666666667,
+        "diff": -0.013888888888888895
+      },
+      {
+        "subject": 8,
+        "seed": 0,
+        "er_random": 0.6197916666666666,
+        "bio_sparse": 0.6006944444444444,
+        "diff": -0.01909722222222221
+      },
+      {
+        "subject": 9,
+        "seed": 0,
+        "er_random": 0.6215277777777778,
+        "bio_sparse": 0.6163194444444444,
+        "diff": -0.00520833333333337
+      }
+    ],
+    "bio_sparse - equiv_dropout": [
+      {
+        "subject": 1,
+        "seed": 0,
+        "equiv_dropout": 0.5295138888888888,
+        "bio_sparse": 0.5295138888888888,
+        "diff": 0.0
+      },
+      {
+        "subject": 2,
+        "seed": 0,
+        "equiv_dropout": 0.2986111111111111,
+        "bio_sparse": 0.296875,
+        "diff": -0.001736111111111105
+      },
+      {
+        "subject": 3,
+        "seed": 0,
+        "equiv_dropout": 0.6232638888888888,
+        "bio_sparse": 0.6267361111111112,
+        "diff": 0.003472222222222321
+      },
+      {
+        "subject": 4,
+        "seed": 0,
+        "equiv_dropout": 0.3819444444444444,
+        "bio_sparse": 0.3680555555555556,
+        "diff": -0.01388888888888884
+      },
+      {
+        "subject": 5,
+        "seed": 0,
+        "equiv_dropout": 0.2777777777777778,
+        "bio_sparse": 0.28125,
+        "diff": 0.00347222222222221
+      },
+      {
+        "subject": 6,
+        "seed": 0,
+        "equiv_dropout": 0.2795138888888888,
+        "bio_sparse": 0.3072916666666666,
+        "diff": 0.02777777777777779
+      },
+      {
+        "subject": 7,
+        "seed": 0,
+        "equiv_dropout": 0.3315972222222222,
+        "bio_sparse": 0.3385416666666667,
+        "diff": 0.006944444444444475
+      },
+      {
+        "subject": 8,
+        "seed": 0,
+        "equiv_dropout": 0.6180555555555556,
+        "bio_sparse": 0.6006944444444444,
+        "diff": -0.01736111111111116
+      },
+      {
+        "subject": 9,
+        "seed": 0,
+        "equiv_dropout": 0.5989583333333333,
+        "bio_sparse": 0.6163194444444444,
+        "diff": 0.01736111111111116
+      }
+    ],
+    "bio_sparse - dense_baseline": [
+      {
+        "subject": 1,
+        "seed": 0,
+        "dense_baseline": 0.515625,
+        "bio_sparse": 0.5295138888888888,
+        "diff": 0.01388888888888884
+      },
+      {
+        "subject": 2,
+        "seed": 0,
+        "dense_baseline": 0.3038194444444445,
+        "bio_sparse": 0.296875,
+        "diff": -0.006944444444444475
+      },
+      {
+        "subject": 3,
+        "seed": 0,
+        "dense_baseline": 0.6267361111111112,
+        "bio_sparse": 0.6267361111111112,
+        "diff": 0.0
+      },
+      {
+        "subject": 4,
+        "seed": 0,
+        "dense_baseline": 0.3854166666666666,
+        "bio_sparse": 0.3680555555555556,
+        "diff": -0.017361111111110994
+      },
+      {
+        "subject": 5,
+        "seed": 0,
+        "dense_baseline": 0.2829861111111111,
+        "bio_sparse": 0.28125,
+        "diff": -0.001736111111111105
+      },
+      {
+        "subject": 6,
+        "seed": 0,
+        "dense_baseline": 0.3072916666666666,
+        "bio_sparse": 0.3072916666666666,
+        "diff": 0.0
+      },
+      {
+        "subject": 7,
+        "seed": 0,
+        "dense_baseline": 0.3263888888888888,
+        "bio_sparse": 0.3385416666666667,
+        "diff": 0.012152777777777901
+      },
+      {
+        "subject": 8,
+        "seed": 0,
+        "dense_baseline": 0.6284722222222222,
+        "bio_sparse": 0.6006944444444444,
+        "diff": -0.02777777777777779
+      },
+      {
+        "subject": 9,
+        "seed": 0,
+        "dense_baseline": 0.6284722222222222,
+        "bio_sparse": 0.6163194444444444,
+        "diff": -0.01215277777777779
+      }
+    ]
+  },
+  "note": "preliminary descriptive statistics; B owns the formal statistical test"
+}

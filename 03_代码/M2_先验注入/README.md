@@ -3,7 +3,7 @@
 > 目标：把果蝇全脑连接组的**类型簇级接线规律**变成解码器的一条固定 64×32 层间掩码，并用三条零模型（度保持重连 / ER 随机 / 等效 dropout）把"生物结构本身"与"稀疏、容量、正则化"分开。
 >
 > 设计依据：`M2_先验注入1页设计草案_初稿.pdf`（2026-10-21 导师例会稿）。
-> 当前状态（2026-10-22）：M2 首轮完成。fine 3 seed × 9 折 × 5 arm、medium/coarse 各 1 seed、1,000-null δ_topo 均已跑完。首轮 fine 结果是**弱/阴性**：bio 五臂最高，但相对 deg_rewired / er_random 仅 +0.82pp / +1.08pp，未达 δ_acc=2.5pp；motif 结构本身显著（Z≈13）。详见文末第 10 节与 `05_报告与交付/阶段报告/M2_实现与结果.md`。
+> 当前状态（2026-10-22）：M2 首轮完成。CSP Stage 1 fine 3 seed × 9 折 × 5 arm、medium/coarse 各 1 seed、1,000-null δ_topo、EEGNet Stage 1 seed 0 × 9 折 × 5 arm 均已跑完。首轮结论是**弱/阴性且对 Stage 1 强弱稳健**：CSP 下 bio 相对 deg_rewired / er_random 仅 +0.82pp / +1.08pp；EEGNet 下整体准确率升到 ~0.44，但 bio 仍不优于 deg/er（ER 反而显著更高）。详见文末第 10 节与 `05_报告与交付/阶段报告/M2_实现与结果.md`。
 
 ## 1. 数据：FlyWire v783 类型级连接矩阵
 
@@ -80,7 +80,8 @@ Stage 2  z (32) -> W_eff = (W * Σ * M) -> ReLU (64)
 Stage 3  h (64) -> 线性 4 类
 ```
 
-- Stage 1：8–13 / 13–30 Hz 两个频带，各 16 个 CSP 分量；固定 Butterworth 滤波 + 训练折内 CSP + StandardScaler。Stage 1 **每折只 fit 一次**，所有 arm 共享，避免 5× 重复计算。
+- Stage 1（默认 `preprocess.stage1: csp`）：8–13 / 13–30 Hz 两个频带，各 16 个 CSP 分量；固定 Butterworth 滤波 + 训练折内 CSP + StandardScaler。Stage 1 **每折只 fit 一次**，所有 arm 共享，避免 5× 重复计算。
+- Stage 1 可选 `eegnet`（`configs/m2_bnci2014_001_eegnet.yaml`）：compact EEGNet-8,2 trunk（kernel 32、F1=8/D=2/F2=16、40 epochs、batch 128、8 threads），每折在训练被试上训练一次，取 32 维 penultimate 特征后冻结；临时 4 类头丢弃，五条 arm 共享这 32 维特征。实测约 2.5–3 分钟/折。
 - Stage 2：`M ∈ {0,1}^{64×32}`、`Σ ∈ {−1,+1}^{64×32}` 为固定 buffer；`W` 可训练，被 mask 的位置梯度为 0。所有 arm 使用同一初始化 seed，保证配对。
 - Stage 3：4 类线性头。
 - `equiv_dropout`：训练时对 64×32 连接做 inverted dropout，keep=0.10；推理时用全连接。
@@ -193,3 +194,19 @@ cd "03_代码"
 
 - 真实类型簇图的 motif 结构**显著高于度保持零模型**；但这**没有转化为解码增益**（bio 相对 deg/er 只有 0.8–1.1pp，低于 δ_acc）。
 - 结论要分开写：**结构显著性 ≠ 任务收益**。M2 的负结果更可能是"类型级结构在 64×32 掩码/当前 Stage 1 上没有转化为跨被试优势"，而不是"连接组没有结构"。
+
+### Stage 1 对照：EEGNet（seed 0）
+
+Stage 1 换成 compact EEGNet-8,2 trunk（kernel 32、F1=8/D=2/F2=16、40 epochs、batch 128、8 threads），每折训练一次并冻结 32 维特征；五条 arm 共享特征。`stage1_fit_time_s ≈ 143 s/折`。
+
+| arm | balanced_acc（9 subjects, seed 0） |
+|---|---:|
+| bio_sparse | 0.4406 ± 0.1494 |
+| deg_rewired | 0.4414 ± 0.1534 |
+| er_random | 0.4479 ± 0.1512 |
+| equiv_dropout | 0.4377 ± 0.1524 |
+| dense_baseline | 0.4450 ± 0.1533 |
+
+- bio − deg：−0.08pp（p=0.94）；bio − er：**−0.73pp（p=0.035）**；bio − equiv：+0.29pp；bio − dense：−0.44pp。
+- EEGNet 把整体准确率从 CSP 的 ~0.38 提到 ~0.44，但 **bio 仍不优于零模型**；ER 反而显著更高。负结果不是 CSP Stage 1 太弱造成的。
+- 限制：EEGNet 只跑了 seed 0；跨 Stage 1 比较是描述性的。

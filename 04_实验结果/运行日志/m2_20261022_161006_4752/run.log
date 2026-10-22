@@ -1,0 +1,16 @@
+[16:10:06] run_id=m2_20261022_161006_4752
+[16:11:01] dataset=bnci2014_001 shape=(5184, 22, 200) subjects=9
+[16:11:01] loaded type connectome from D:\Python Program\Fruit fly brain Project\02_数据\fly_connectome\processed
+[16:11:10] granularity=fine k_out=64 k_in=32 types=8155 positive_expanded=1462
+[16:11:10] bio mask edges=205 density=0.1001 granularity=fine selection=balanced
+[16:11:10] folds=9 split_file=D:\Python Program\Fruit fly brain Project\04_实验结果\运行日志\m2_20261022_161006_4752\splits.json
+[16:11:10] running M2 seed=0 (9 folds, 5 arms) ...
+[16:30:42]   seed=0 arm=bio_sparse: mean=0.4406 (9 folds)
+[16:30:42]   seed=0 arm=deg_rewired: mean=0.4414 (9 folds)
+[16:30:42]   seed=0 arm=er_random: mean=0.4479 (9 folds)
+[16:30:42]   seed=0 arm=equiv_dropout: mean=0.4377 (9 folds)
+[16:30:42]   seed=0 arm=dense_baseline: mean=0.4450 (9 folds)
+[16:30:42] results_csv=D:\Python Program\Fruit fly brain Project\04_实验结果\结果表\m2_eegnet\results_m2_20261022_161006_4752.csv
+[16:30:42] results_json=D:\Python Program\Fruit fly brain Project\04_实验结果\结果表\m2_eegnet\results_m2_20261022_161006_4752.json
+[16:30:42] predictions_csv=D:\Python Program\Fruit fly brain Project\04_实验结果\结果表\m2_eegnet\predictions_m2_20261022_161006_4752.csv
+[16:30:42] done

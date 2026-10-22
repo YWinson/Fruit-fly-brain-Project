@@ -21,6 +21,12 @@ CONFIG_PATH = (
     / "configs"
     / "m2_synthetic.yaml"
 )
+EEGNET_CONFIG_PATH = (
+    Path(__file__).resolve().parents[1]
+    / "M2_先验注入"
+    / "configs"
+    / "m2_bnci2014_001_eegnet.yaml"
+)
 
 from common_utils.metadata import normalize_metadata
 from M1_评测管线.data import EpochDataset, load_synthetic_dataset
@@ -146,6 +152,12 @@ def test_m2_config_synthetic():
     config = load_m2_config(CONFIG_PATH)
     assert config["dataset"]["name"] == "synthetic"
     assert len(config["preprocess"]["bands"]) * config["preprocess"]["csp_components"] == 32
+
+
+def test_m2_eegnet_config():
+    config = load_m2_config(EEGNET_CONFIG_PATH)
+    assert config["preprocess"]["stage1"] == "eegnet"
+    assert int(config["preprocess"]["eegnet"]["feature_dim"]) == 32
 
 
 def test_m2_end_to_end_synthetic_fold():

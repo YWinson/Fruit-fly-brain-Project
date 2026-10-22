@@ -58,6 +58,10 @@ python "M1_评测管线/run_m1.py" --config "M1_评测管线/configs/m1_syntheti
 # 7) M2：全量 3 seeds × 9 folds × 5 arms
 "C:/Users/Winson/anaconda3/envs/eeg/python.exe" "M2_先验注入/run_m2.py" \
     --config "M2_先验注入/configs/m2_bnci2014_001.yaml" --seed 0 1 2
+
+# 8) M2 with EEGNet Stage 1（更强特征提取器；每折约 2.5–3 分钟）
+"C:/Users/Winson/anaconda3/envs/eeg/python.exe" "M2_先验注入/run_m2.py" \
+    --config "M2_先验注入/configs/m2_bnci2014_001_eegnet.yaml" --seed 0
 ```
 
 ## 关键约定

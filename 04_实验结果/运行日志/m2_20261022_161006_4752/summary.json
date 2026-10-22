@@ -1,0 +1,42 @@
+[
+  {
+    "arm": "bio_sparse",
+    "model": "masked_mlp_bio",
+    "seed": 0,
+    "mean": 0.44058641975308643,
+    "std": 0.14939833241145428,
+    "count": 9
+  },
+  {
+    "arm": "deg_rewired",
+    "model": "masked_mlp_deg_rewired",
+    "seed": 0,
+    "mean": 0.44135802469135804,
+    "std": 0.15341461380728436,
+    "count": 9
+  },
+  {
+    "arm": "dense_baseline",
+    "model": "masked_mlp_dense",
+    "seed": 0,
+    "mean": 0.44502314814814814,
+    "std": 0.15333901018577462,
+    "count": 9
+  },
+  {
+    "arm": "equiv_dropout",
+    "model": "masked_mlp_dropout",
+    "seed": 0,
+    "mean": 0.43769290123456783,
+    "std": 0.1523590686654801,
+    "count": 9
+  },
+  {
+    "arm": "er_random",
+    "model": "masked_mlp_er_random",
+    "seed": 0,
+    "mean": 0.4479166666666667,
+    "std": 0.15122364914957648,
+    "count": 9
+  }
+]
