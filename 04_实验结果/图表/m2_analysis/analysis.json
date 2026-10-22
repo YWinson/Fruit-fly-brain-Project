@@ -1,0 +1,886 @@
+{
+  "n_files": 1,
+  "n_rows": 405,
+  "n_all_rows": 135,
+  "arms": [
+    "dense_baseline",
+    "equiv_dropout",
+    "er_random",
+    "deg_rewired",
+    "bio_sparse"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "subjects": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+  "delta_acc": 0.025,
+  "summary": [
+    {
+      "arm": "dense_baseline",
+      "mean": 0.3624614197530864,
+      "std": 0.09315622610864334,
+      "count": 27
+    },
+    {
+      "arm": "equiv_dropout",
+      "mean": 0.36014660493827155,
+      "std": 0.09871358497781452,
+      "count": 27
+    },
+    {
+      "arm": "er_random",
+      "mean": 0.3698559670781893,
+      "std": 0.09967325150385734,
+      "count": 27
+    },
+    {
+      "arm": "deg_rewired",
+      "mean": 0.3724279835390946,
+      "std": 0.09880753332581144,
+      "count": 27
+    },
+    {
+      "arm": "bio_sparse",
+      "mean": 0.38065843621399176,
+      "std": 0.10631748591786519,
+      "count": 27
+    }
+  ],
+  "comparisons": [
+    {
+      "comparison": "bio_sparse - deg_rewired",
+      "left": "bio_sparse",
+      "right": "deg_rewired",
+      "n_subjects": 9,
+      "mean_diff": 0.008230452674897115,
+      "std_diff": 0.01085273043312953,
+      "min_diff": -0.008101851851851805,
+      "max_diff": 0.025462962962962927,
+      "delta_acc": 0.025,
+      "meets_delta_acc": false,
+      "wilcoxon_stat": 6.0,
+      "wilcoxon_p": 0.0546875
+    },
+    {
+      "comparison": "bio_sparse - er_random",
+      "left": "bio_sparse",
+      "right": "er_random",
+      "n_subjects": 9,
+      "mean_diff": 0.010802469135802455,
+      "std_diff": 0.028171341470337178,
+      "min_diff": -0.020833333333333353,
+      "max_diff": 0.07870370370370365,
+      "delta_acc": 0.025,
+      "meets_delta_acc": false,
+      "wilcoxon_stat": 14.0,
+      "wilcoxon_p": 0.359375
+    },
+    {
+      "comparison": "bio_sparse - equiv_dropout",
+      "left": "bio_sparse",
+      "right": "equiv_dropout",
+      "n_subjects": 9,
+      "mean_diff": 0.020511831275720153,
+      "std_diff": 0.042468839825615466,
+      "min_diff": -0.023726851851851898,
+      "max_diff": 0.11226851851851848,
+      "delta_acc": 0.025,
+      "meets_delta_acc": false,
+      "wilcoxon_stat": 12.0,
+      "wilcoxon_p": 0.25
+    },
+    {
+      "comparison": "bio_sparse - dense_baseline",
+      "left": "bio_sparse",
+      "right": "dense_baseline",
+      "n_subjects": 9,
+      "mean_diff": 0.018197016460905355,
+      "std_diff": 0.035559813528371224,
+      "min_diff": -0.021412037037037035,
+      "max_diff": 0.09374999999999994,
+      "delta_acc": 0.025,
+      "meets_delta_acc": false,
+      "wilcoxon_stat": 9.0,
+      "wilcoxon_p": 0.12890625
+    }
+  ],
+  "paired_details": {
+    "bio_sparse - deg_rewired": [
+      {
+        "subject": 1,
+        "seed": 0,
+        "deg_rewired": 0.4704861111111111,
+        "bio_sparse": 0.4843749999999999,
+        "diff": 0.013888888888888784
+      },
+      {
+        "subject": 1,
+        "seed": 1,
+        "deg_rewired": 0.4809027777777778,
+        "bio_sparse": 0.4965277777777778,
+        "diff": 0.015625
+      },
+      {
+        "subject": 1,
+        "seed": 2,
+        "deg_rewired": 0.4722222222222222,
+        "bio_sparse": 0.4947916666666667,
+        "diff": 0.022569444444444475
+      },
+      {
+        "subject": 2,
+        "seed": 0,
+        "deg_rewired": 0.3159722222222222,
+        "bio_sparse": 0.3125,
+        "diff": -0.00347222222222221
+      },
+      {
+        "subject": 2,
+        "seed": 1,
+        "deg_rewired": 0.2673611111111111,
+        "bio_sparse": 0.3055555555555556,
+        "diff": 0.038194444444444475
+      },
+      {
+        "subject": 2,
+        "seed": 2,
+        "deg_rewired": 0.3020833333333333,
+        "bio_sparse": 0.28125,
+        "diff": -0.020833333333333315
+      },
+      {
+        "subject": 3,
+        "seed": 0,
+        "deg_rewired": 0.3333333333333333,
+        "bio_sparse": 0.361111111111111,
+        "diff": 0.02777777777777768
+      },
+      {
+        "subject": 3,
+        "seed": 1,
+        "deg_rewired": 0.34375,
+        "bio_sparse": 0.3506944444444445,
+        "diff": 0.006944444444444475
+      },
+      {
+        "subject": 3,
+        "seed": 2,
+        "deg_rewired": 0.3819444444444444,
+        "bio_sparse": 0.3402777777777777,
+        "diff": -0.04166666666666674
+      },
+      {
+        "subject": 4,
+        "seed": 0,
+        "deg_rewired": 0.3802083333333333,
+        "bio_sparse": 0.3489583333333333,
+        "diff": -0.03125
+      },
+      {
+        "subject": 4,
+        "seed": 1,
+        "deg_rewired": 0.3402777777777778,
+        "bio_sparse": 0.375,
+        "diff": 0.03472222222222221
+      },
+      {
+        "subject": 4,
+        "seed": 2,
+        "deg_rewired": 0.3767361111111111,
+        "bio_sparse": 0.40625,
+        "diff": 0.029513888888888895
+      },
+      {
+        "subject": 5,
+        "seed": 0,
+        "deg_rewired": 0.2743055555555556,
+        "bio_sparse": 0.2951388888888889,
+        "diff": 0.020833333333333315
+      },
+      {
+        "subject": 5,
+        "seed": 1,
+        "deg_rewired": 0.2777777777777778,
+        "bio_sparse": 0.2760416666666667,
+        "diff": -0.001736111111111105
+      },
+      {
+        "subject": 5,
+        "seed": 2,
+        "deg_rewired": 0.2899305555555556,
+        "bio_sparse": 0.28125,
+        "diff": -0.00868055555555558
+      },
+      {
+        "subject": 6,
+        "seed": 0,
+        "deg_rewired": 0.2482638888888889,
+        "bio_sparse": 0.2673611111111111,
+        "diff": 0.01909722222222221
+      },
+      {
+        "subject": 6,
+        "seed": 1,
+        "deg_rewired": 0.2447916666666666,
+        "bio_sparse": 0.2638888888888889,
+        "diff": 0.019097222222222293
+      },
+      {
+        "subject": 6,
+        "seed": 2,
+        "deg_rewired": 0.2829861111111111,
+        "bio_sparse": 0.2552083333333333,
+        "diff": -0.02777777777777779
+      },
+      {
+        "subject": 7,
+        "seed": 0,
+        "deg_rewired": 0.2951388888888888,
+        "bio_sparse": 0.3003472222222222,
+        "diff": 0.005208333333333426
+      },
+      {
+        "subject": 7,
+        "seed": 1,
+        "deg_rewired": 0.3003472222222222,
+        "bio_sparse": 0.3142361111111111,
+        "diff": 0.013888888888888895
+      },
+      {
+        "subject": 7,
+        "seed": 2,
+        "deg_rewired": 0.3350694444444444,
+        "bio_sparse": 0.2916666666666667,
+        "diff": -0.043402777777777735
+      },
+      {
+        "subject": 8,
+        "seed": 0,
+        "deg_rewired": 0.5121527777777778,
+        "bio_sparse": 0.5729166666666666,
+        "diff": 0.06076388888888884
+      },
+      {
+        "subject": 8,
+        "seed": 1,
+        "deg_rewired": 0.5381944444444444,
+        "bio_sparse": 0.5381944444444444,
+        "diff": 0.0
+      },
+      {
+        "subject": 8,
+        "seed": 2,
+        "deg_rewired": 0.5694444444444444,
+        "bio_sparse": 0.5659722222222222,
+        "diff": -0.00347222222222221
+      },
+      {
+        "subject": 9,
+        "seed": 0,
+        "deg_rewired": 0.53125,
+        "bio_sparse": 0.4635416666666666,
+        "diff": -0.06770833333333343
+      },
+      {
+        "subject": 9,
+        "seed": 1,
+        "deg_rewired": 0.4600694444444444,
+        "bio_sparse": 0.4826388888888889,
+        "diff": 0.022569444444444475
+      },
+      {
+        "subject": 9,
+        "seed": 2,
+        "deg_rewired": 0.4305555555555555,
+        "bio_sparse": 0.5520833333333333,
+        "diff": 0.12152777777777773
+      }
+    ],
+    "bio_sparse - er_random": [
+      {
+        "subject": 1,
+        "seed": 0,
+        "er_random": 0.4878472222222222,
+        "bio_sparse": 0.4843749999999999,
+        "diff": -0.003472222222222321
+      },
+      {
+        "subject": 1,
+        "seed": 1,
+        "er_random": 0.5034722222222222,
+        "bio_sparse": 0.4965277777777778,
+        "diff": -0.00694444444444442
+      },
+      {
+        "subject": 1,
+        "seed": 2,
+        "er_random": 0.4878472222222222,
+        "bio_sparse": 0.4947916666666667,
+        "diff": 0.006944444444444475
+      },
+      {
+        "subject": 2,
+        "seed": 0,
+        "er_random": 0.2986111111111111,
+        "bio_sparse": 0.3125,
+        "diff": 0.013888888888888895
+      },
+      {
+        "subject": 2,
+        "seed": 1,
+        "er_random": 0.2829861111111111,
+        "bio_sparse": 0.3055555555555556,
+        "diff": 0.022569444444444475
+      },
+      {
+        "subject": 2,
+        "seed": 2,
+        "er_random": 0.2899305555555556,
+        "bio_sparse": 0.28125,
+        "diff": -0.00868055555555558
+      },
+      {
+        "subject": 3,
+        "seed": 0,
+        "er_random": 0.2986111111111111,
+        "bio_sparse": 0.361111111111111,
+        "diff": 0.06249999999999989
+      },
+      {
+        "subject": 3,
+        "seed": 1,
+        "er_random": 0.3072916666666667,
+        "bio_sparse": 0.3506944444444445,
+        "diff": 0.04340277777777779
+      },
+      {
+        "subject": 3,
+        "seed": 2,
+        "er_random": 0.3697916666666667,
+        "bio_sparse": 0.3402777777777777,
+        "diff": -0.029513888888889006
+      },
+      {
+        "subject": 4,
+        "seed": 0,
+        "er_random": 0.3923611111111111,
+        "bio_sparse": 0.3489583333333333,
+        "diff": -0.04340277777777779
+      },
+      {
+        "subject": 4,
+        "seed": 1,
+        "er_random": 0.4010416666666667,
+        "bio_sparse": 0.375,
+        "diff": -0.026041666666666685
+      },
+      {
+        "subject": 4,
+        "seed": 2,
+        "er_random": 0.3993055555555556,
+        "bio_sparse": 0.40625,
+        "diff": 0.00694444444444442
+      },
+      {
+        "subject": 5,
+        "seed": 0,
+        "er_random": 0.28125,
+        "bio_sparse": 0.2951388888888889,
+        "diff": 0.013888888888888895
+      },
+      {
+        "subject": 5,
+        "seed": 1,
+        "er_random": 0.2760416666666667,
+        "bio_sparse": 0.2760416666666667,
+        "diff": 0.0
+      },
+      {
+        "subject": 5,
+        "seed": 2,
+        "er_random": 0.2986111111111111,
+        "bio_sparse": 0.28125,
+        "diff": -0.017361111111111105
+      },
+      {
+        "subject": 6,
+        "seed": 0,
+        "er_random": 0.2517361111111111,
+        "bio_sparse": 0.2673611111111111,
+        "diff": 0.015625
+      },
+      {
+        "subject": 6,
+        "seed": 1,
+        "er_random": 0.2638888888888889,
+        "bio_sparse": 0.2638888888888889,
+        "diff": 0.0
+      },
+      {
+        "subject": 6,
+        "seed": 2,
+        "er_random": 0.2690972222222222,
+        "bio_sparse": 0.2552083333333333,
+        "diff": -0.013888888888888895
+      },
+      {
+        "subject": 7,
+        "seed": 0,
+        "er_random": 0.296875,
+        "bio_sparse": 0.3003472222222222,
+        "diff": 0.00347222222222221
+      },
+      {
+        "subject": 7,
+        "seed": 1,
+        "er_random": 0.3194444444444444,
+        "bio_sparse": 0.3142361111111111,
+        "diff": -0.005208333333333315
+      },
+      {
+        "subject": 7,
+        "seed": 2,
+        "er_random": 0.2881944444444444,
+        "bio_sparse": 0.2916666666666667,
+        "diff": 0.0034722222222222654
+      },
+      {
+        "subject": 8,
+        "seed": 0,
+        "er_random": 0.5364583333333333,
+        "bio_sparse": 0.5729166666666666,
+        "diff": 0.03645833333333337
+      },
+      {
+        "subject": 8,
+        "seed": 1,
+        "er_random": 0.5850694444444444,
+        "bio_sparse": 0.5381944444444444,
+        "diff": -0.046875
+      },
+      {
+        "subject": 8,
+        "seed": 2,
+        "er_random": 0.5381944444444444,
+        "bio_sparse": 0.5659722222222222,
+        "diff": 0.02777777777777779
+      },
+      {
+        "subject": 9,
+        "seed": 0,
+        "er_random": 0.4357638888888889,
+        "bio_sparse": 0.4635416666666666,
+        "diff": 0.02777777777777768
+      },
+      {
+        "subject": 9,
+        "seed": 1,
+        "er_random": 0.4045138888888889,
+        "bio_sparse": 0.4826388888888889,
+        "diff": 0.078125
+      },
+      {
+        "subject": 9,
+        "seed": 2,
+        "er_random": 0.421875,
+        "bio_sparse": 0.5520833333333333,
+        "diff": 0.13020833333333326
+      }
+    ],
+    "bio_sparse - equiv_dropout": [
+      {
+        "subject": 1,
+        "seed": 0,
+        "equiv_dropout": 0.4322916666666666,
+        "bio_sparse": 0.4843749999999999,
+        "diff": 0.052083333333333315
+      },
+      {
+        "subject": 1,
+        "seed": 1,
+        "equiv_dropout": 0.4461805555555556,
+        "bio_sparse": 0.4965277777777778,
+        "diff": 0.05034722222222221
+      },
+      {
+        "subject": 1,
+        "seed": 2,
+        "equiv_dropout": 0.4618055555555556,
+        "bio_sparse": 0.4947916666666667,
+        "diff": 0.032986111111111105
+      },
+      {
+        "subject": 2,
+        "seed": 0,
+        "equiv_dropout": 0.3142361111111111,
+        "bio_sparse": 0.3125,
+        "diff": -0.001736111111111105
+      },
+      {
+        "subject": 2,
+        "seed": 1,
+        "equiv_dropout": 0.3055555555555556,
+        "bio_sparse": 0.3055555555555556,
+        "diff": 0.0
+      },
+      {
+        "subject": 2,
+        "seed": 2,
+        "equiv_dropout": 0.3159722222222222,
+        "bio_sparse": 0.28125,
+        "diff": -0.03472222222222221
+      },
+      {
+        "subject": 3,
+        "seed": 0,
+        "equiv_dropout": 0.2951388888888889,
+        "bio_sparse": 0.361111111111111,
+        "diff": 0.0659722222222221
+      },
+      {
+        "subject": 3,
+        "seed": 1,
+        "equiv_dropout": 0.3124999999999999,
+        "bio_sparse": 0.3506944444444445,
+        "diff": 0.038194444444444586
+      },
+      {
+        "subject": 3,
+        "seed": 2,
+        "equiv_dropout": 0.3055555555555556,
+        "bio_sparse": 0.3402777777777777,
+        "diff": 0.0347222222222221
+      },
+      {
+        "subject": 4,
+        "seed": 0,
+        "equiv_dropout": 0.3489583333333333,
+        "bio_sparse": 0.3489583333333333,
+        "diff": 0.0
+      },
+      {
+        "subject": 4,
+        "seed": 1,
+        "equiv_dropout": 0.3923611111111111,
+        "bio_sparse": 0.375,
+        "diff": -0.017361111111111105
+      },
+      {
+        "subject": 4,
+        "seed": 2,
+        "equiv_dropout": 0.3298611111111111,
+        "bio_sparse": 0.40625,
+        "diff": 0.0763888888888889
+      },
+      {
+        "subject": 5,
+        "seed": 0,
+        "equiv_dropout": 0.2708333333333333,
+        "bio_sparse": 0.2951388888888889,
+        "diff": 0.02430555555555558
+      },
+      {
+        "subject": 5,
+        "seed": 1,
+        "equiv_dropout": 0.265625,
+        "bio_sparse": 0.2760416666666667,
+        "diff": 0.010416666666666685
+      },
+      {
+        "subject": 5,
+        "seed": 2,
+        "equiv_dropout": 0.2760416666666667,
+        "bio_sparse": 0.28125,
+        "diff": 0.005208333333333315
+      },
+      {
+        "subject": 6,
+        "seed": 0,
+        "equiv_dropout": 0.2777777777777778,
+        "bio_sparse": 0.2673611111111111,
+        "diff": -0.010416666666666685
+      },
+      {
+        "subject": 6,
+        "seed": 1,
+        "equiv_dropout": 0.2621527777777778,
+        "bio_sparse": 0.2638888888888889,
+        "diff": 0.001736111111111105
+      },
+      {
+        "subject": 6,
+        "seed": 2,
+        "equiv_dropout": 0.2604166666666666,
+        "bio_sparse": 0.2552083333333333,
+        "diff": -0.005208333333333259
+      },
+      {
+        "subject": 7,
+        "seed": 0,
+        "equiv_dropout": 0.2847222222222222,
+        "bio_sparse": 0.3003472222222222,
+        "diff": 0.015625
+      },
+      {
+        "subject": 7,
+        "seed": 1,
+        "equiv_dropout": 0.3315972222222222,
+        "bio_sparse": 0.3142361111111111,
+        "diff": -0.017361111111111105
+      },
+      {
+        "subject": 7,
+        "seed": 2,
+        "equiv_dropout": 0.3246527777777778,
+        "bio_sparse": 0.2916666666666667,
+        "diff": -0.032986111111111105
+      },
+      {
+        "subject": 8,
+        "seed": 0,
+        "equiv_dropout": 0.607638888888889,
+        "bio_sparse": 0.5729166666666666,
+        "diff": -0.03472222222222232
+      },
+      {
+        "subject": 8,
+        "seed": 1,
+        "equiv_dropout": 0.5850694444444444,
+        "bio_sparse": 0.5381944444444444,
+        "diff": -0.046875
+      },
+      {
+        "subject": 8,
+        "seed": 2,
+        "equiv_dropout": 0.5555555555555556,
+        "bio_sparse": 0.5659722222222222,
+        "diff": 0.01041666666666663
+      },
+      {
+        "subject": 9,
+        "seed": 0,
+        "equiv_dropout": 0.3767361111111111,
+        "bio_sparse": 0.4635416666666666,
+        "diff": 0.08680555555555547
+      },
+      {
+        "subject": 9,
+        "seed": 1,
+        "equiv_dropout": 0.4184027777777778,
+        "bio_sparse": 0.4826388888888889,
+        "diff": 0.0642361111111111
+      },
+      {
+        "subject": 9,
+        "seed": 2,
+        "equiv_dropout": 0.3663194444444444,
+        "bio_sparse": 0.5520833333333333,
+        "diff": 0.18576388888888884
+      }
+    ],
+    "bio_sparse - dense_baseline": [
+      {
+        "subject": 1,
+        "seed": 0,
+        "dense_baseline": 0.4739583333333332,
+        "bio_sparse": 0.4843749999999999,
+        "diff": 0.010416666666666685
+      },
+      {
+        "subject": 1,
+        "seed": 1,
+        "dense_baseline": 0.5190972222222222,
+        "bio_sparse": 0.4965277777777778,
+        "diff": -0.02256944444444442
+      },
+      {
+        "subject": 1,
+        "seed": 2,
+        "dense_baseline": 0.4826388888888888,
+        "bio_sparse": 0.4947916666666667,
+        "diff": 0.012152777777777901
+      },
+      {
+        "subject": 2,
+        "seed": 0,
+        "dense_baseline": 0.2517361111111111,
+        "bio_sparse": 0.3125,
+        "diff": 0.060763888888888895
+      },
+      {
+        "subject": 2,
+        "seed": 1,
+        "dense_baseline": 0.2725694444444445,
+        "bio_sparse": 0.3055555555555556,
+        "diff": 0.032986111111111105
+      },
+      {
+        "subject": 2,
+        "seed": 2,
+        "dense_baseline": 0.2743055555555555,
+        "bio_sparse": 0.28125,
+        "diff": 0.006944444444444475
+      },
+      {
+        "subject": 3,
+        "seed": 0,
+        "dense_baseline": 0.3177083333333333,
+        "bio_sparse": 0.361111111111111,
+        "diff": 0.04340277777777768
+      },
+      {
+        "subject": 3,
+        "seed": 1,
+        "dense_baseline": 0.3090277777777777,
+        "bio_sparse": 0.3506944444444445,
+        "diff": 0.041666666666666796
+      },
+      {
+        "subject": 3,
+        "seed": 2,
+        "dense_baseline": 0.3125,
+        "bio_sparse": 0.3402777777777777,
+        "diff": 0.02777777777777768
+      },
+      {
+        "subject": 4,
+        "seed": 0,
+        "dense_baseline": 0.3628472222222222,
+        "bio_sparse": 0.3489583333333333,
+        "diff": -0.013888888888888895
+      },
+      {
+        "subject": 4,
+        "seed": 1,
+        "dense_baseline": 0.3611111111111111,
+        "bio_sparse": 0.375,
+        "diff": 0.013888888888888895
+      },
+      {
+        "subject": 4,
+        "seed": 2,
+        "dense_baseline": 0.3802083333333333,
+        "bio_sparse": 0.40625,
+        "diff": 0.026041666666666685
+      },
+      {
+        "subject": 5,
+        "seed": 0,
+        "dense_baseline": 0.2847222222222222,
+        "bio_sparse": 0.2951388888888889,
+        "diff": 0.010416666666666685
+      },
+      {
+        "subject": 5,
+        "seed": 1,
+        "dense_baseline": 0.2604166666666667,
+        "bio_sparse": 0.2760416666666667,
+        "diff": 0.015625
+      },
+      {
+        "subject": 5,
+        "seed": 2,
+        "dense_baseline": 0.2899305555555556,
+        "bio_sparse": 0.28125,
+        "diff": -0.00868055555555558
+      },
+      {
+        "subject": 6,
+        "seed": 0,
+        "dense_baseline": 0.2743055555555555,
+        "bio_sparse": 0.2673611111111111,
+        "diff": -0.00694444444444442
+      },
+      {
+        "subject": 6,
+        "seed": 1,
+        "dense_baseline": 0.2899305555555555,
+        "bio_sparse": 0.2638888888888889,
+        "diff": -0.02604166666666663
+      },
+      {
+        "subject": 6,
+        "seed": 2,
+        "dense_baseline": 0.2864583333333333,
+        "bio_sparse": 0.2552083333333333,
+        "diff": -0.03125
+      },
+      {
+        "subject": 7,
+        "seed": 0,
+        "dense_baseline": 0.3090277777777778,
+        "bio_sparse": 0.3003472222222222,
+        "diff": -0.00868055555555558
+      },
+      {
+        "subject": 7,
+        "seed": 1,
+        "dense_baseline": 0.3333333333333333,
+        "bio_sparse": 0.3142361111111111,
+        "diff": -0.01909722222222221
+      },
+      {
+        "subject": 7,
+        "seed": 2,
+        "dense_baseline": 0.328125,
+        "bio_sparse": 0.2916666666666667,
+        "diff": -0.036458333333333315
+      },
+      {
+        "subject": 8,
+        "seed": 0,
+        "dense_baseline": 0.5295138888888888,
+        "bio_sparse": 0.5729166666666666,
+        "diff": 0.04340277777777779
+      },
+      {
+        "subject": 8,
+        "seed": 1,
+        "dense_baseline": 0.5538194444444444,
+        "bio_sparse": 0.5381944444444444,
+        "diff": -0.015625
+      },
+      {
+        "subject": 8,
+        "seed": 2,
+        "dense_baseline": 0.5121527777777777,
+        "bio_sparse": 0.5659722222222222,
+        "diff": 0.05381944444444453
+      },
+      {
+        "subject": 9,
+        "seed": 0,
+        "dense_baseline": 0.4236111111111111,
+        "bio_sparse": 0.4635416666666666,
+        "diff": 0.03993055555555547
+      },
+      {
+        "subject": 9,
+        "seed": 1,
+        "dense_baseline": 0.3940972222222222,
+        "bio_sparse": 0.4826388888888889,
+        "diff": 0.08854166666666669
+      },
+      {
+        "subject": 9,
+        "seed": 2,
+        "dense_baseline": 0.3993055555555556,
+        "bio_sparse": 0.5520833333333333,
+        "diff": 0.15277777777777768
+      }
+    ]
+  },
+  "note": "preliminary descriptive statistics; B owns the formal statistical test"
+}

@@ -1,0 +1,28 @@
+[12:42:00] run_id=m2_20261022_124200_0468
+[12:42:59] dataset=bnci2014_001 shape=(5184, 22, 200) subjects=9
+[12:42:59] loaded type connectome from D:\Python Program\Fruit fly brain Project\02_数据\fly_connectome\processed
+[12:43:09] granularity=fine k_out=64 k_in=32 types=8155 positive_expanded=1462
+[12:43:09] bio mask edges=205 density=0.1001 granularity=fine selection=balanced
+[12:43:10] folds=9 split_file=D:\Python Program\Fruit fly brain Project\04_实验结果\运行日志\m2_20261022_124200_0468\splits.json
+[12:43:10] running M2 seed=0 (9 folds, 5 arms) ...
+[12:49:31]   seed=0 arm=bio_sparse: mean=0.3785 (9 folds)
+[12:49:31]   seed=0 arm=deg_rewired: mean=0.3735 (9 folds)
+[12:49:31]   seed=0 arm=er_random: mean=0.3644 (9 folds)
+[12:49:31]   seed=0 arm=equiv_dropout: mean=0.3565 (9 folds)
+[12:49:31]   seed=0 arm=dense_baseline: mean=0.3586 (9 folds)
+[12:49:31] running M2 seed=1 (9 folds, 5 arms) ...
+[12:56:00]   seed=1 arm=bio_sparse: mean=0.3783 (18 folds)
+[12:56:00]   seed=1 arm=deg_rewired: mean=0.3675 (18 folds)
+[12:56:00]   seed=1 arm=er_random: mean=0.3680 (18 folds)
+[12:56:00]   seed=1 arm=equiv_dropout: mean=0.3627 (18 folds)
+[12:56:00]   seed=1 arm=dense_baseline: mean=0.3623 (18 folds)
+[12:56:00] running M2 seed=2 (9 folds, 5 arms) ...
+[13:02:23]   seed=2 arm=bio_sparse: mean=0.3807 (27 folds)
+[13:02:23]   seed=2 arm=deg_rewired: mean=0.3724 (27 folds)
+[13:02:23]   seed=2 arm=er_random: mean=0.3699 (27 folds)
+[13:02:23]   seed=2 arm=equiv_dropout: mean=0.3601 (27 folds)
+[13:02:23]   seed=2 arm=dense_baseline: mean=0.3625 (27 folds)
+[13:02:24] results_csv=D:\Python Program\Fruit fly brain Project\04_实验结果\结果表\results_m2_20261022_124200_0468.csv
+[13:02:24] results_json=D:\Python Program\Fruit fly brain Project\04_实验结果\结果表\results_m2_20261022_124200_0468.json
+[13:02:24] predictions_csv=D:\Python Program\Fruit fly brain Project\04_实验结果\结果表\predictions_m2_20261022_124200_0468.csv
+[13:02:24] done

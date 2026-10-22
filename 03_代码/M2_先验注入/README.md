@@ -3,7 +3,7 @@
 > 目标：把果蝇全脑连接组的**类型簇级接线规律**变成解码器的一条固定 64×32 层间掩码，并用三条零模型（度保持重连 / ER 随机 / 等效 dropout）把"生物结构本身"与"稀疏、容量、正则化"分开。
 >
 > 设计依据：`M2_先验注入1页设计草案_初稿.pdf`（2026-10-21 导师例会稿）。
-> 当前状态（2026-10-22）：代码与数据管线完成，fine/medium/coarse 三级粒度可构建；synthetic 与真实 BNCI2014-001 单折冒烟通过；全量 3 seed 结果跑完后回填。
+> 当前状态（2026-10-22）：代码与数据管线完成；fine 粒度 3 seed × 9 折 × 5 arm 已跑完；medium/coarse 粒度与 1,000-null δ_topo 校准进行中。首轮 fine 结果是**弱/阴性**：bio 五臂最高，但相对 deg_rewired / er_random 仅 +0.82pp / +1.08pp，未达 δ_acc=2.5pp。详见文末第 10 节与 `05_报告与交付/阶段报告/M2_实现与结果.md`。
 
 ## 1. 数据：FlyWire v783 类型级连接矩阵
 
@@ -145,3 +145,28 @@ cd "03_代码"
 ```
 
 覆盖：balanced mask 密度、curveball 度不变量与 Hamming、ER 边数、Masked MLP 输出/概率、MultiBandCSP 32 维、toy motif 计数、M2 config、synthetic 端到端单折。
+
+## 10. 首轮 fine 结果（2026-10-22）
+
+结果文件：`04_实验结果/结果表/results_m2_20261022_124200_0468.csv`（405 行；逐试次预测 77,760 行）。
+
+| arm | balanced_acc（27 个 subject×seed） |
+|---|---:|
+| bio_sparse | **0.3807 ± 0.1063** |
+| deg_rewired | 0.3724 ± 0.0988 |
+| er_random | 0.3699 ± 0.0997 |
+| equiv_dropout | 0.3601 ± 0.0987 |
+| dense_baseline | 0.3625 ± 0.0932 |
+
+配对差（按 subject 平均 3 seeds）：
+
+| 比较 | mean diff | std | 初步 Wilcoxon p | ≥ δ_acc 2.5pp |
+|---|---:|---:|---:|---|
+| bio − deg_rewired | +0.0082 | 0.0109 | 0.0547 | 否 |
+| bio − er_random | +0.0108 | 0.0282 | 0.3594 | 否 |
+| bio − equiv_dropout | +0.0205 | 0.0425 | 0.2500 | 否 |
+| bio − dense_baseline | +0.0182 | 0.0356 | 0.1289 | 否 |
+
+**结论**：bio 在三个 seed 中都是最高，但相对两个零模型的优势只有 0.8–1.1pp，**未达预设 SESOI 2.5pp**；逐被试效应不稳定（S8/S9 驱动优势，S3/S7 的 deg_rewired 更高）。本轮**不支持**"果蝇类型级结构先验带来 ≥2.5pp 跨被试提升"；这是弱/阴性结果，不是正向证据。
+
+仍待补：medium/coarse 粒度探针（1 seed）、1,000-null δ_topo 校准、正式统计（B）。

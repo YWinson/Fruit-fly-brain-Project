@@ -1,0 +1,122 @@
+[
+  {
+    "arm": "bio_sparse",
+    "model": "masked_mlp_bio",
+    "seed": 0,
+    "mean": 0.3784722222222222,
+    "std": 0.10439067349237362,
+    "count": 9
+  },
+  {
+    "arm": "bio_sparse",
+    "model": "masked_mlp_bio",
+    "seed": 1,
+    "mean": 0.37808641975308643,
+    "std": 0.10255839545398024,
+    "count": 9
+  },
+  {
+    "arm": "bio_sparse",
+    "model": "masked_mlp_bio",
+    "seed": 2,
+    "mean": 0.3854166666666667,
+    "std": 0.12362098606779294,
+    "count": 9
+  },
+  {
+    "arm": "deg_rewired",
+    "model": "masked_mlp_deg_rewired",
+    "seed": 0,
+    "mean": 0.3734567901234568,
+    "std": 0.1061530954346279,
+    "count": 9
+  },
+  {
+    "arm": "deg_rewired",
+    "model": "masked_mlp_deg_rewired",
+    "seed": 1,
+    "mean": 0.36149691358024694,
+    "std": 0.105588451511888,
+    "count": 9
+  },
+  {
+    "arm": "deg_rewired",
+    "model": "masked_mlp_deg_rewired",
+    "seed": 2,
+    "mean": 0.38233024691358025,
+    "std": 0.09521654570348062,
+    "count": 9
+  },
+  {
+    "arm": "dense_baseline",
+    "model": "masked_mlp_dense",
+    "seed": 0,
+    "mean": 0.3586033950617284,
+    "std": 0.09674482520153226,
+    "count": 9
+  },
+  {
+    "arm": "dense_baseline",
+    "model": "masked_mlp_dense",
+    "seed": 1,
+    "mean": 0.36593364197530864,
+    "std": 0.105773834930714,
+    "count": 9
+  },
+  {
+    "arm": "dense_baseline",
+    "model": "masked_mlp_dense",
+    "seed": 2,
+    "mean": 0.3628472222222222,
+    "std": 0.08732483569416173,
+    "count": 9
+  },
+  {
+    "arm": "equiv_dropout",
+    "model": "masked_mlp_dropout",
+    "seed": 0,
+    "mean": 0.3564814814814815,
+    "std": 0.10812084083558465,
+    "count": 9
+  },
+  {
+    "arm": "equiv_dropout",
+    "model": "masked_mlp_dropout",
+    "seed": 1,
+    "mean": 0.3688271604938272,
+    "std": 0.10389182169413658,
+    "count": 9
+  },
+  {
+    "arm": "equiv_dropout",
+    "model": "masked_mlp_dropout",
+    "seed": 2,
+    "mean": 0.3551311728395061,
+    "std": 0.0951703709345254,
+    "count": 9
+  },
+  {
+    "arm": "er_random",
+    "model": "masked_mlp_er_random",
+    "seed": 0,
+    "mean": 0.3643904320987654,
+    "std": 0.10218914453042158,
+    "count": 9
+  },
+  {
+    "arm": "er_random",
+    "model": "masked_mlp_er_random",
+    "seed": 1,
+    "mean": 0.3715277777777778,
+    "std": 0.11199935218583318,
+    "count": 9
+  },
+  {
+    "arm": "er_random",
+    "model": "masked_mlp_er_random",
+    "seed": 2,
+    "mean": 0.3736496913580247,
+    "std": 0.09616934295296754,
+    "count": 9
+  }
+]
