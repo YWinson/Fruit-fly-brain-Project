@@ -62,6 +62,18 @@ python "M1_评测管线/run_m1.py" --config "M1_评测管线/configs/m1_syntheti
 # 8) M2 with EEGNet Stage 1（更强特征提取器；每折约 2.5–3 分钟）
 "C:/Users/Winson/anaconda3/envs/eeg/python.exe" "M2_先验注入/run_m2.py" \
     --config "M2_先验注入/configs/m2_bnci2014_001_eegnet.yaml" --seed 0
+
+# 9) M2 mask 密度/选择消融（CSP Stage 1）
+"C:/Users/Winson/anaconda3/envs/eeg/python.exe" "M2_先验注入/run_m2.py" \
+    --config "M2_先验注入/configs/m2_bnci2014_001.yaml" --density 0.05 --seed 0 1 2 \
+    --results-dir "04_实验结果/结果表/m2_ablation/density_05"
+"C:/Users/Winson/anaconda3/envs/eeg/python.exe" "M2_先验注入/run_m2.py" \
+    --config "M2_先验注入/configs/m2_bnci2014_001.yaml" --density 0.20 --seed 0 1 2 \
+    --results-dir "04_实验结果/结果表/m2_ablation/density_20"
+"C:/Users/Winson/anaconda3/envs/eeg/python.exe" "M2_先验注入/run_m2.py" \
+    --config "M2_先验注入/configs/m2_bnci2014_001.yaml" --density 0.10 --selection global --seed 0 \
+    --results-dir "04_实验结果/结果表/m2_ablation/selection_global_10"
+"C:/Users/Winson/anaconda3/envs/eeg/python.exe" "M2_先验注入/analyze_ablation.py"
 ```
 
 ## 关键约定

@@ -50,7 +50,11 @@ from common_utils.splits import make_loso_splits, save_folds
 from M1_评测管线.data import load_dataset
 from M2_先验注入.arms import ARM_NAMES
 from M2_先验注入.clusters import build_granularity, save_granularity
-from M2_先验注入.config import ALLOWED_GRANULARITIES, load_m2_config
+from M2_先验注入.config import (
+    ALLOWED_GRANULARITIES,
+    load_m2_config,
+    validate_m2_config,
+)
 from M2_先验注入.connectome import build_from_defaults, load_type_connectome
 from M2_先验注入.evaluate import fold_report, run_all, run_canary, summary_table
 from M2_先验注入.masks import (
@@ -68,6 +72,15 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--dataset", choices=["bnci2014_001", "synthetic"], default=None)
     parser.add_argument(
         "--granularity", choices=list(ALLOWED_GRANULARITIES), default=None
+    )
+    parser.add_argument(
+        "--density", type=float, default=None, help="override fly.mask_density"
+    )
+    parser.add_argument(
+        "--selection",
+        choices=["balanced", "global"],
+        default=None,
+        help="override fly.mask_selection",
     )
     parser.add_argument(
         "--arm", nargs="+", choices=list(ARM_NAMES) + ["all"], default=None
@@ -167,6 +180,11 @@ def main(argv: list[str] | None = None) -> int:
         config["dataset"]["name"] = args.dataset
     if args.granularity:
         config["fly"]["granularity"] = args.granularity
+    if args.density is not None:
+        config["fly"]["mask_density"] = float(args.density)
+    if args.selection is not None:
+        config["fly"]["mask_selection"] = args.selection
+    validate_m2_config(config)
     arms = _select_arms(args, config)
     seeds = _select_seeds(args, config)
     results_dir = resolve_project_path(args.results_dir or config["output"]["results_dir"])
