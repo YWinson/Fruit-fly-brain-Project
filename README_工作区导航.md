@@ -54,7 +54,8 @@
 - **M2 首轮结果（fine，3 seeds × 9 折）**：bio_sparse **0.3807 ± 0.1063**、deg_rewired 0.3724、er_random 0.3699、equiv_dropout 0.3601、dense_baseline 0.3625。bio 在三个 seed 中最高，但 bio−deg 仅 **+0.82pp**、bio−er 仅 **+1.08pp**，均**低于 δ_acc=2.5pp**；配对 Wilcoxon p=0.055 / 0.359。**弱/阴性结果，不支持"果蝇类型级先验 ≥2.5pp 提升"。**
 - **粒度探针（各 1 seed）**：fine bio .3785 vs ER .3644（+1.41pp）；medium .3627 vs .3644（−0.17pp）；coarse .3414 vs .3644（−2.30pp，coarse 的 deg N/A）。方向是 fine > medium > coarse，但 fine 仍未达 δ_acc。
 - **δ_topo（1,000 nulls）**：FFL Z=**13.00**、bi-fan Z=**12.85**（empirical p=0）；真实类型簇图的 motif 显著高于度保持零模型。但**结构显著性 ≠ 解码增益**：M2 首轮整体是弱/阴性结果。
-- **EEGNet Stage 1（seed 0）**：整体准确率升到 ~0.44（CSP ~0.38），但 bio .4406 vs deg .4414 / er .4479；bio−er −0.73pp（p=0.035）。**负结果对 Stage 1 强弱稳健**。M2 首轮完成，待 B 正式统计。
+- **EEGNet Stage 1（seed 0）**：整体准确率升到 ~0.44（CSP ~0.38），但 bio .4406 vs deg .4414 / er .4479；bio−er −0.73pp（p=0.035）。**负结果对 Stage 1 强弱稳健**。
+- **Mask 密度/选择消融（matched seed 0）**：5% bio .3663 / 10% .3785 / 20% .3785；10% global .3754；bio−deg 在所有密度 <0.7pp，bio−er 1.1–1.4pp，均**低于 δ_acc=2.5pp**。5% 太稀疏，10–20% 是平台；balanced 略优于 global，global 的 `deg_rewired` N/A（Hamming 172–192 <205）。M2 首轮完成，待 B 正式统计。
 - M3–M5、IF-5 仍为空壳。
 
 ## 命名约定（建议）

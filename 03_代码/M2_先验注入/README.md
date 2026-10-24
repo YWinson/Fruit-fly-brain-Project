@@ -3,7 +3,7 @@
 > 目标：把果蝇全脑连接组的**类型簇级接线规律**变成解码器的一条固定 64×32 层间掩码，并用三条零模型（度保持重连 / ER 随机 / 等效 dropout）把"生物结构本身"与"稀疏、容量、正则化"分开。
 >
 > 设计依据：`M2_先验注入1页设计草案_初稿.pdf`（2026-10-21 导师例会稿）。
-> 当前状态（2026-10-22）：M2 首轮完成。CSP Stage 1 fine 3 seed × 9 折 × 5 arm、medium/coarse 各 1 seed、1,000-null δ_topo、EEGNet Stage 1 seed 0 × 9 折 × 5 arm 均已跑完。首轮结论是**弱/阴性且对 Stage 1 强弱稳健**：CSP 下 bio 相对 deg_rewired / er_random 仅 +0.82pp / +1.08pp；EEGNet 下整体准确率升到 ~0.44，但 bio 仍不优于 deg/er（ER 反而显著更高）。详见文末第 10 节与 `05_报告与交付/阶段报告/M2_实现与结果.md`。
+> 当前状态（2026-10-22/24）：M2 首轮完成。CSP Stage 1 fine 3 seed × 9 折 × 5 arm、medium/coarse 各 1 seed、1,000-null δ_topo、EEGNet Stage 1 seed 0 × 9 折 × 5 arm、mask 密度（5/10/20%）与选择（balanced/global）消融（matched seed 0）均已跑完。首轮结论是**弱/阴性且对 Stage 1 强弱稳健**：CSP 下 bio 相对 deg_rewired / er_random 仅 +0.82pp / +1.08pp；EEGNet 下整体准确率升到 ~0.44，但 bio 仍不优于 deg/er（ER 反而显著更高）；密度/选择消融没有发现能达到 δ_acc=2.5pp 的组合。详见文末第 10 节与 `05_报告与交付/阶段报告/M2_实现与结果.md`。
 
 ## 1. 数据：FlyWire v783 类型级连接矩阵
 
@@ -222,3 +222,14 @@ Stage 1 换成 compact EEGNet-8,2 trunk（kernel 32、F1=8/D=2/F2=16、40 epochs
 - 5% 太稀疏；10% 与 20% 是平台。
 - bio−deg 在所有密度下 <0.7pp；bio−er 在 10–20% 为 1.2–1.4pp，仍 < δ_acc=2.5pp。
 - 5%/20% 的 `deg_rewired` 均通过 Hamming ≥ E；10% global top-k 的 deg N/A（Hamming <205），只能比较 bio vs ER。
+
+### 映射选择（10%，balanced vs global top-k，matched seed 0）
+
+| 选择方式 | bio | deg_rewired | er_random | equiv_dropout | dense_baseline | bio−deg | bio−er |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| balanced | **0.3785** | 0.3735 | 0.3644 | 0.3565 | 0.3586 | +0.50pp | +1.41pp |
+| global | 0.3754 | N/A | 0.3644 | 0.3565 | 0.3586 | N/A | +1.10pp |
+
+- global top-k 的 9 折 `deg_rewired` 全部 N/A（Hamming 172–192 < E=205）；ER/equiv/dense 与 balanced 相同。
+- balanced 比 global 的 bio 高 0.31pp；global 没有额外收益，bio−er 1.10pp 仍低于 δ_acc。
+- 结论：balanced top-k 是更可用的选择方式；global 不会让生物结构产生 δ_acc 级优势，反而让度保持零模型不可识别。

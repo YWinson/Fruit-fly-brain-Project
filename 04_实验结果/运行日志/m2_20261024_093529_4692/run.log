@@ -1,0 +1,25 @@
+[09:35:29] run_id=m2_20261024_093529_4692
+[09:36:01] dataset=bnci2014_001 shape=(5184, 22, 200) subjects=9
+[09:36:01] loaded type connectome from D:\Python Program\Fruit fly brain Project\02_数据\fly_connectome\processed
+[09:36:06] granularity=fine k_out=64 k_in=32 types=8155 positive_expanded=1462
+[09:36:06] bio mask edges=205 density=0.1001 granularity=fine selection=global
+[09:36:06] folds=9 split_file=D:\Python Program\Fruit fly brain Project\04_实验结果\运行日志\m2_20261024_093529_4692\splits.json
+[09:36:06] running M2 seed=0 (9 folds, 5 arms) ...
+[09:36:35]   skipping arm=deg_rewired: rewiring did not move enough edges: Hamming=182, E=205; increase n_swaps_factor or inspect the mask
+[09:37:05]   skipping arm=deg_rewired: rewiring did not move enough edges: Hamming=176, E=205; increase n_swaps_factor or inspect the mask
+[09:37:34]   skipping arm=deg_rewired: rewiring did not move enough edges: Hamming=186, E=205; increase n_swaps_factor or inspect the mask
+[09:38:02]   skipping arm=deg_rewired: rewiring did not move enough edges: Hamming=186, E=205; increase n_swaps_factor or inspect the mask
+[09:38:30]   skipping arm=deg_rewired: rewiring did not move enough edges: Hamming=180, E=205; increase n_swaps_factor or inspect the mask
+[09:38:59]   skipping arm=deg_rewired: rewiring did not move enough edges: Hamming=180, E=205; increase n_swaps_factor or inspect the mask
+[09:39:29]   skipping arm=deg_rewired: rewiring did not move enough edges: Hamming=192, E=205; increase n_swaps_factor or inspect the mask
+[09:39:56]   skipping arm=deg_rewired: rewiring did not move enough edges: Hamming=172, E=205; increase n_swaps_factor or inspect the mask
+[09:40:25]   skipping arm=deg_rewired: rewiring did not move enough edges: Hamming=172, E=205; increase n_swaps_factor or inspect the mask
+[09:40:31]   seed=0 arm=bio_sparse: mean=0.3754 (9 folds)
+[09:40:31]   seed=0 arm=er_random: mean=0.3644 (9 folds)
+[09:40:31]   seed=0 arm=equiv_dropout: mean=0.3565 (9 folds)
+[09:40:31]   seed=0 arm=dense_baseline: mean=0.3586 (9 folds)
+[09:40:32] skipped 6 arm/fold combinations
+[09:40:32] results_csv=D:\Python Program\Fruit fly brain Project\04_实验结果\结果表\m2_ablation\selection_global_10\results_m2_20261024_093529_4692.csv
+[09:40:32] results_json=D:\Python Program\Fruit fly brain Project\04_实验结果\结果表\m2_ablation\selection_global_10\results_m2_20261024_093529_4692.json
+[09:40:32] predictions_csv=D:\Python Program\Fruit fly brain Project\04_实验结果\结果表\m2_ablation\selection_global_10\predictions_m2_20261024_093529_4692.csv
+[09:40:32] done
