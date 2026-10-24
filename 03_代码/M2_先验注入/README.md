@@ -210,3 +210,15 @@ Stage 1 换成 compact EEGNet-8,2 trunk（kernel 32、F1=8/D=2/F2=16、40 epochs
 - bio − deg：−0.08pp（p=0.94）；bio − er：**−0.73pp（p=0.035）**；bio − equiv：+0.29pp；bio − dense：−0.44pp。
 - EEGNet 把整体准确率从 CSP 的 ~0.38 提到 ~0.44，但 **bio 仍不优于零模型**；ER 反而显著更高。负结果不是 CSP Stage 1 太弱造成的。
 - 限制：EEGNet 只跑了 seed 0；跨 Stage 1 比较是描述性的。
+
+### Mask 密度消融（CSP Stage 1，matched seed 0）
+
+| 密度 | bio | deg_rewired | er_random | equiv_dropout | dense_baseline | bio−deg | bio−er |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 5% | 0.3663 | 0.3598 | 0.3650 | 0.3372 | 0.3586 | +0.66pp | +0.14pp |
+| 10% | 0.3785 | 0.3735 | 0.3644 | 0.3565 | 0.3586 | +0.50pp | +1.41pp |
+| 20% | 0.3785 | 0.3756 | 0.3665 | 0.3628 | 0.3586 | +0.29pp | +1.20pp |
+
+- 5% 太稀疏；10% 与 20% 是平台。
+- bio−deg 在所有密度下 <0.7pp；bio−er 在 10–20% 为 1.2–1.4pp，仍 < δ_acc=2.5pp。
+- 5%/20% 的 `deg_rewired` 均通过 Hamming ≥ E；10% global top-k 的 deg N/A（Hamming <205），只能比较 bio vs ER。

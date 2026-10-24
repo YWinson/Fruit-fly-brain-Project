@@ -1,0 +1,90 @@
+{
+  "n_annotated_neurons": 137720,
+  "n_types": 8846,
+  "n_raw_edges": 15091983,
+  "n_kept_edges": 2688204,
+  "n_unmapped_edges": 12309,
+  "min_synapses": 5,
+  "total_synapses": 34005583.0,
+  "excitatory_synapses": 20275683.0,
+  "inhibitory_synapses": 13729900.0,
+  "n_nonzero_type_pairs": 404919,
+  "density_type_matrix": 0.005174570229233056,
+  "top_types": [
+    {
+      "type_id": "Mi1",
+      "n_neurons": 1584,
+      "total_synapses": 1523590.0
+    },
+    {
+      "type_id": "Tm1",
+      "n_neurons": 1555,
+      "total_synapses": 1297951.0
+    },
+    {
+      "type_id": "L2",
+      "n_neurons": 1699,
+      "total_synapses": 990170.0
+    },
+    {
+      "type_id": "L5",
+      "n_neurons": 1577,
+      "total_synapses": 744617.0
+    },
+    {
+      "type_id": "Tm2",
+      "n_neurons": 1551,
+      "total_synapses": 725103.0
+    },
+    {
+      "type_id": "Tm3",
+      "n_neurons": 1756,
+      "total_synapses": 642036.0
+    },
+    {
+      "type_id": "L1",
+      "n_neurons": 1591,
+      "total_synapses": 558425.0
+    },
+    {
+      "type_id": "Mi4",
+      "n_neurons": 1532,
+      "total_synapses": 533008.0
+    },
+    {
+      "type_id": "Mi9",
+      "n_neurons": 1554,
+      "total_synapses": 497396.0
+    },
+    {
+      "type_id": "T2a",
+      "n_neurons": 1772,
+      "total_synapses": 469384.0
+    },
+    {
+      "type_id": "Tm4",
+      "n_neurons": 1491,
+      "total_synapses": 452652.0
+    },
+    {
+      "type_id": "T3",
+      "n_neurons": 1675,
+      "total_synapses": 445990.0
+    },
+    {
+      "type_id": "Pm03",
+      "n_neurons": 191,
+      "total_synapses": 425402.0
+    },
+    {
+      "type_id": "Pm05",
+      "n_neurons": 148,
+      "total_synapses": 396429.0
+    },
+    {
+      "type_id": "Pm08",
+      "n_neurons": 117,
+      "total_synapses": 395581.0
+    }
+  ]
+}
